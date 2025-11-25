@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máté Dort · Work</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="page page--work">
+    <div class="grid grid--home grid--work">
+        <main class="hero hero--home hero--work">
+            <div class="hero-content">
+                <a class="back-link" href="index.html" aria-label="Back to timeline">← Back</a>
+                <h1 id="project-title"></h1>
+                <p class="hero-subline" id="project-copy"></p>
+                <p class="project-summary" id="project-summary"></p>
+                <ul class="highlight-list" id="project-highlights"></ul>
+            </div>
+        </main>
+
+        <aside class="timeline timeline--right" aria-label="Project list">
+            <div class="timeline-glow"></div>
+            <ul class="timeline-list" id="year-wheel">
+                <!-- populated via script -->
+            </ul>
+        </aside>
+    </div>
+
+    <footer class="footer-links footer-links--work">
+        <div class="actions actions--home actions--work">
+            <div class="actions-column">
+                <a class="link-block" href="https://github.com" target="_blank" rel="noopener">Repo</a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js" defer></script>
+</body>
+</html>
+

@@ -13,7 +13,13 @@
     <div class="grid grid--home grid--work">
         <main class="hero hero--home hero--work">
             <div class="hero-content">
-                <a class="back-link" href="index.html" aria-label="Back to timeline">← Back</a>
+                <div class="hero-header-row">
+                    <a class="back-link" href="index.html" aria-label="Back to timeline">← Back</a>
+                    <label class="timeline-select timeline-select--stack timeline-select--right" aria-label="Select project">
+                        <span>Project</span>
+                        <select id="timeline-select"></select>
+                    </label>
+                </div>
                 <h1 id="project-title"></h1>
                 <p class="hero-subline" id="project-copy"></p>
                 <p class="project-summary" id="project-summary"></p>

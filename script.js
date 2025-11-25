@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isWorkPage = body.classList.contains('page--work');
     const dataset = isWorkPage ? projectEntries : yearEntries;
+    const dropdown = document.getElementById('timeline-select');
     const items = [];
 
     dataset.forEach((entry, index) => {
@@ -115,6 +116,13 @@ document.addEventListener('DOMContentLoaded', () => {
         li.textContent = isWorkPage ? entry.title : entry.year;
         wheel.appendChild(li);
         items.push(li);
+
+        if (dropdown) {
+            const option = document.createElement('option');
+            option.value = String(index);
+            option.textContent = isWorkPage ? entry.title : entry.year;
+            dropdown.appendChild(option);
+        }
 
         li.addEventListener('click', () => focusIndex(index, true));
     });
@@ -126,9 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectSummary = document.getElementById('project-summary');
     const projectHighlights = document.getElementById('project-highlights');
 
-let activeIndex = 0;
-let ticking = false;
-let introTimer = null;
+    let activeIndex = 0;
+    let ticking = false;
+    let introTimer = null;
 
     const renderEntry = (entry) => {
         if (isWorkPage) {
@@ -149,25 +157,30 @@ let introTimer = null;
         }
     };
 
-const setActiveIndex = (index) => {
-    if (index === activeIndex || index < 0 || index >= items.length) return;
+    const updateDropdown = () => {
+        if (dropdown) {
+            dropdown.value = String(activeIndex);
+        }
+    };
+
+    const setActiveIndex = (index) => {
+        if (index === activeIndex || index < 0 || index >= items.length) return;
         items[activeIndex].classList.remove('is-active');
         activeIndex = index;
         items[activeIndex].classList.add('is-active');
         renderEntry(dataset[activeIndex]);
+        updateDropdown();
     };
 
-const focusIndex = (index, smooth = false, force = false) => {
-    if (!force && index === activeIndex) {
-        return;
-    }
+    const focusIndex = (index, smooth = false, force = false) => {
+        if (!force && index === activeIndex) return;
         const target = items[index];
         if (!target) return;
         const targetOffset = target.offsetTop + target.offsetHeight / 2;
         const centerOffset = wheel.clientHeight / 2;
         const top = targetOffset - centerOffset;
         wheel.scrollTo({ top, behavior: smooth ? 'smooth' : 'auto' });
-    setActiveIndex(index);
+        setActiveIndex(index);
     };
 
     const syncActive = () => {
@@ -187,44 +200,52 @@ const focusIndex = (index, smooth = false, force = false) => {
         }
     };
 
-wheel.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            syncActive();
-            ticking = false;
+    if (dropdown) {
+        dropdown.addEventListener('change', (event) => {
+            const nextIndex = Number(event.target.value);
+            focusIndex(nextIndex, true, true);
         });
-        ticking = true;
     }
-});
 
-const runHomeIntro = () => {
-    if (isWorkPage) return;
-    const startIndex = dataset.length - 1;
-    focusIndex(startIndex, false, true);
-    let current = startIndex;
-
-    const step = () => {
-        current -= 1;
-        if (current < 0) {
-            focusIndex(0, true, true);
-            introTimer = null;
-            return;
+    wheel.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                syncActive();
+                ticking = false;
+            });
+            ticking = true;
         }
-        focusIndex(current, true, true);
-        introTimer = window.setTimeout(step, 160);
+    });
+
+    const runHomeIntro = () => {
+        if (isWorkPage) return;
+        const startIndex = dataset.length - 1;
+        focusIndex(startIndex, false, true);
+        let current = startIndex;
+
+        const step = () => {
+            current -= 1;
+            if (current < 0) {
+                focusIndex(0, true, true);
+                introTimer = null;
+                return;
+            }
+            focusIndex(current, true, true);
+            introTimer = window.setTimeout(step, 160);
+        };
+
+        introTimer = window.setTimeout(step, 400);
     };
 
-    introTimer = window.setTimeout(step, 400);
-};
+    // Prime UI
+    activeIndex = isWorkPage ? 0 : dataset.length - 1;
+    items[activeIndex].classList.add('is-active');
+    renderEntry(dataset[activeIndex]);
+    updateDropdown();
 
-// Prime UI
-activeIndex = isWorkPage ? 0 : dataset.length - 1;
-items[activeIndex].classList.add('is-active');
-renderEntry(dataset[activeIndex]);
-
-if (isWorkPage) {
-    focusIndex(0);
-} else {
-    runHomeIntro();
-}
+    if (isWorkPage) {
+        focusIndex(0);
+    } else {
+        runHomeIntro();
+    }
 });

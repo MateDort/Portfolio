@@ -222,7 +222,8 @@ h1 {
     touch-action: pan-y;
 }
 
-.timeline-select, .timeline-select--fixed {
+.timeline-select,
+.timeline-select--fixed {
     display: none;
     margin-top: 1.5rem;
     font-size: 0.95rem;
@@ -232,7 +233,6 @@ h1 {
 }
 
 .timeline-select--fixed {
-    display: inline-flex;
     margin-top: 0;
     margin-bottom: 1rem;
 }

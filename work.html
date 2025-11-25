@@ -10,6 +10,28 @@
     <link href="styles.css" rel="stylesheet">
 </head>
 <body class="page page--work">
+    <div class="menu-dropdown" id="menu-dropdown">
+        <div class="menu-item">
+            <span class="menu-label">name:</span>
+            <span class="menu-value">Máté Dort</span>
+        </div>
+        <div class="menu-item">
+            <span class="menu-label">nationality:</span>
+            <span class="menu-value">Hungarian</span>
+        </div>
+        <div class="menu-item">
+            <span class="menu-label">occupation:</span>
+            <span class="menu-value">Student</span>
+        </div>
+        <div class="menu-item">
+            <span class="menu-label">major:</span>
+            <span class="menu-value">Computer Information Systems</span>
+        </div>
+        <div class="menu-item">
+            <span class="menu-label">dream job:</span>
+            <span class="menu-value">Designer at Google</span>
+        </div>
+    </div>
     <div class="grid grid--home grid--work">
         <main class="hero hero--home hero--work">
             <div class="hero-content">
@@ -21,6 +43,7 @@
                     </label>
                 </div>
                 <h1 id="project-title"></h1>
+                <div class="project-award" id="project-award"></div>
                 <p class="hero-subline" id="project-copy"></p>
                 <p class="project-summary" id="project-summary"></p>
                 <ul class="highlight-list" id="project-highlights"></ul>
@@ -38,7 +61,8 @@
     <footer class="footer-links footer-links--work">
         <div class="actions actions--home actions--work">
             <div class="actions-column">
-                <a class="link-block" href="https://github.com/MateDort" target="_blank" rel="noopener">Repo</a>
+                <a class="link-block" id="repo-link" href="#" target="_blank" rel="noopener">Repo</a>
+                <a class="link-block" id="devpost-link" href="#" target="_blank" rel="noopener" style="display: none;">Devpost</a>
             </div>
         </div>
     </footer>

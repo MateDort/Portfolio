@@ -28,39 +28,44 @@ const yearEntries = [
 
 const projectEntries = [
     {
-        title: "Buy Anything",
-        copy: "One-tap marketplace that bundles every campus need into a single, trusted concierge.",
-        summary: "Designed the entire service blueprint from scouting to hand-off for a SMS-first experience.",
+        title: "BargainHouse",
+        copy: "Multi-agent shopping system that finds, verifies, and negotiates deals across new and used marketplaces.",
+        summary: "Submitting to The AI Championship hackathon. Building 8 specialized agents that will search 7+ platforms, call stores to verify prices, negotiate with sellers, and rank options. Features live browser automation, Agent Hub for cross-agent communication, and integrations with Twilio, and LLM APIs.",
+        repo: "https://github.com/MateDort/BargainHouse",
+        inProgress: "In Progress",
         highlights: [
-            "Crafted atomic design system for ops tooling in under two weeks.",
-            "Reduced fulfillment time by 38% through predictive batching UX.",
-            "Launched with 150+ active student shoppers."
+            "Building 8 specialized agents (Planner, Search, Call, Negotiate, PriceTracker, SynthSummary, Arbiter, Checkout) that will automate shopping across Amazon, Best Buy, Facebook Marketplace, and more.",
+            "Creating Agent Hub for real-time cross-agent communication and live visual feedback with browser screenshots and step-by-step progress tracking.",
+            "Technical stack: React + Chakra UI, Node.js/Express, Puppeteer, Raindrop MCP, Twilio, ElevenLabs, OpenAI/Gemini."
         ]
     },
     {
         title: "TossWise",
-        copy: "Computer-vision assistant that nudges you toward the right recycle bin.",
-        summary: "Machine learning + playful microcopy to turn waste sorting into muscle memory.",
+        copy: "AI-powered smart trash bin that uses computer vision and natural language to classify waste in real time.",
+        summary: "A hands-free system that identifies waste, guides disposal through voice feedback, and adapts to location-specific bin configurations. Combines YOLOv8 person detection, Google Gemini Vision for classification, ElevenLabs TTS for voice guidance, and Arduino hardware integration.",
+        award: "👑 Winner of Best Use of Gemini API at Emory Hacks 2025.",
+        repo: "https://github.com/VihaanIyer/TossWise-",
+        devpost: "https://devpost.com/software/tosswise",
         highlights: [
-            "Led user studies with 6 campuses to map confusion moments.",
-            "Embedded YOLOv5 inference on-device with <120ms response.",
-            "Built kiosk UI with haptics and voice guidance."
+            "I was working on the detection process and onboarding. Making yolov8 use a trained robolfow model to better pick up trash and help the llm. Also on the design adding live trash falling animation into the bin on the UI and adding contamination percentage. I also worked out the onboarding so system can adapt to any bin situation."
         ]
     },
     {
         title: "C.L.I.M.A",
-        copy: "Crisis logistics intelligence for municipal responders.",
-        summary: "Unified radar feeds, SMS alerts, and staffing plans into one calm dashboard.",
+        copy: "Precision agriculture platform that helps farmers make smarter decisions using NASA technology.",
+        summary: "2nd place at HackATL 2025 (NASA Technology Transfer Program). Built in 48 hours with teammates Brody Weinfurtner, Jack Bashaw, and Leah Loukedis. Combines two NASA technologies: HSEG (Hierarchical Segmentation Engine) for pixel-level farmland segmentation into distinct soil and crop zones, and MERRA/AS & Climate Analytics as a Service for weather pattern forecasting. Provides hyper-local, data-driven insights so farmers can optimize irrigation, fertilizer, and planting strategies while preparing for climate challenges.",
+        award: "🥈 2nd Place at HackATL 2025",
+        repo: "https://www.figma.com/proto/IAjpRoCcleqqqPee0KpgSI/Nasa-Project?page-id=0%3A1&node-id=6-5&p=f&viewport=393%2C488%2C0.07&t=TV6b0ItWCHVEJ6fM-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6%3A44&show-proto-sidebar=1",
+        repoLabel: "Figma Design",
         highlights: [
-            "Architected modular map layers with deck.gl + Mapbox.",
-            "Invented priority chips that cut triage chaos during drills.",
-            "ISO 27001-aligned data handling playbook."
+            "I worked on the MVP while the others worked out the business plan. I made the full app's design in Figma and I made a React web app to present the idea."
         ]
     },
     {
         title: "SkillShipping",
         copy: "Talent exchange marketplace matching athletes with emerging startups.",
         summary: "Rapid experimentation led to a matchmaking flow inspired by relay races.",
+        repo: "https://github.com/MateDort",
         highlights: [
             "Tripled weekly matches using contextual video intros.",
             "Automated contract packets to ship in <5 minutes.",
@@ -71,6 +76,7 @@ const projectEntries = [
         title: "NeuraNote",
         copy: "Thought-capture notebook with on-device vector embeddings.",
         summary: "Feels like Messages, thinks like a researcher—everything searchable by vibe.",
+        repo: "https://github.com/MateDort",
         highlights: [
             "Crafted spatial ink gestures for instant tags.",
             "Fine-tuned small LLM to summarize hand-written notes.",
@@ -81,6 +87,7 @@ const projectEntries = [
         title: "Ring Doorman AI",
         copy: "Smart concierge that greets visitors with your tone and context.",
         summary: "Modeled etiquette from 50+ real interactions to keep intros warm, never robotic.",
+        repo: "https://github.com/MateDort",
         highlights: [
             "Edge-deployed voice clones to keep data local.",
             "Adaptive scripts respect cultural nuances + pronouns.",
@@ -91,6 +98,7 @@ const projectEntries = [
         title: "EMESE AI assistant",
         copy: "Personal swim strategist predicting splits, nutrition, and taper windows.",
         summary: "Blends WHOOP data with pool logs to coach like the mentor I wanted growing up.",
+        repo: "https://github.com/MateDort",
         highlights: [
             "Forecast errors under 1.5% for 200m freestyle.",
             "Dynamic readiness score now used by 6 national-level swimmers.",
@@ -130,9 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroLine = document.getElementById('hero-line');
     const ageValue = document.getElementById('age-value');
     const projectTitle = document.getElementById('project-title');
+    const projectAward = document.getElementById('project-award');
     const projectCopy = document.getElementById('project-copy');
     const projectSummary = document.getElementById('project-summary');
     const projectHighlights = document.getElementById('project-highlights');
+    const repoLink = document.getElementById('repo-link');
+    const devpostLink = document.getElementById('devpost-link');
 
     let activeIndex = 0;
     let ticking = false;
@@ -141,6 +152,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderEntry = (entry) => {
         if (isWorkPage) {
             if (projectTitle) projectTitle.textContent = entry.title;
+            if (projectAward) {
+                if (entry.award) {
+                    projectAward.textContent = entry.award;
+                    projectAward.classList.add('is-visible');
+                    // Add silver class for 2nd place badges
+                    if (entry.award.includes('2nd Place') || entry.award.includes('🥈')) {
+                        projectAward.classList.add('project-award--silver');
+                    } else {
+                        projectAward.classList.remove('project-award--silver');
+                    }
+                } else if (entry.inProgress) {
+                    projectAward.textContent = entry.inProgress;
+                    projectAward.classList.add('is-visible');
+                    projectAward.classList.remove('project-award--silver');
+                } else {
+                    projectAward.classList.remove('is-visible');
+                    projectAward.classList.remove('project-award--silver');
+                }
+            }
             if (projectCopy) projectCopy.textContent = entry.copy;
             if (projectSummary) projectSummary.textContent = entry.summary;
             if (projectHighlights) {
@@ -150,6 +180,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     li.textContent = point;
                     projectHighlights.appendChild(li);
                 });
+            }
+            if (repoLink && entry.repo) {
+                repoLink.href = entry.repo;
+                if (entry.repoLabel) {
+                    repoLink.textContent = entry.repoLabel;
+                } else {
+                    repoLink.textContent = "Repo";
+                }
+            }
+            if (devpostLink) {
+                if (entry.devpost) {
+                    devpostLink.href = entry.devpost;
+                    devpostLink.style.display = 'block';
+                } else {
+                    devpostLink.style.display = 'none';
+                }
             }
         } else {
             if (heroLine) heroLine.textContent = entry.copy;
@@ -243,9 +289,11 @@ document.addEventListener('DOMContentLoaded', () => {
     renderEntry(dataset[activeIndex]);
     updateDropdown();
 
-    if (isWorkPage) {
-        focusIndex(0);
-    } else {
-        runHomeIntro();
-    }
+if (isWorkPage) {
+    focusIndex(0);
+} else {
+    runHomeIntro();
+}
+
+// Menu dropdown is now handled by CSS hover
 });

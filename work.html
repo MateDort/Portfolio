@@ -42,11 +42,47 @@
                         <select id="timeline-select"></select>
                     </label>
                 </div>
-                <h1 id="project-title"></h1>
-                <div class="project-award" id="project-award"></div>
-                <p class="hero-subline" id="project-copy"></p>
-                <p class="project-summary" id="project-summary"></p>
-                <ul class="highlight-list" id="project-highlights"></ul>
+                <div class="case-study-header">
+                    <h1 id="project-title"></h1>
+                    <div class="project-award" id="project-award"></div>
+                    <p class="hero-subline" id="project-copy"></p>
+                    <p class="project-summary" id="project-summary"></p>
+                </div>
+                <div class="view-toggle" id="view-toggle">
+                    <button class="toggle-btn active" data-view="ux">UX Design</button>
+                    <button class="toggle-btn" data-view="developer">Developer</button>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-section" id="case-study-ux">
+                        <div class="section-block">
+                            <h2 class="section-title">User Flows</h2>
+                            <ul class="user-flow-list" id="user-flows-ux"></ul>
+                        </div>
+                        <div class="section-block">
+                            <h2 class="section-title">Design Decisions</h2>
+                            <ul class="design-decisions-list" id="design-decisions-ux"></ul>
+                        </div>
+                        <div class="section-block">
+                            <h2 class="section-title">Highlights</h2>
+                            <ul class="highlight-list" id="highlights-ux"></ul>
+                        </div>
+                    </div>
+                    <div class="case-study-section" id="case-study-developer" style="display: none;">
+                        <div class="section-block">
+                            <h2 class="section-title">Architecture</h2>
+                            <ul class="architecture-list" id="architecture-dev"></ul>
+                        </div>
+                        <div class="section-block">
+                            <h2 class="section-title">Tech Stack</h2>
+                            <ul class="tech-stack-list" id="tech-stack-dev"></ul>
+                        </div>
+                        <div class="section-block">
+                            <h2 class="section-title">Highlights</h2>
+                            <ul class="highlight-list" id="highlights-dev"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-media" id="project-media"></div>
             </div>
         </main>
 

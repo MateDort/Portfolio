@@ -27,49 +27,49 @@ const yearEntries = [
 ];
 
 const projectEntries = [
-    {
-        title: "BargainHouse",
-        copy: "Multi-agent shopping system that finds, verifies, and negotiates deals across new and used marketplaces.",
-        summary: "Submitting to The AI Championship hackathon. Building 8 specialized agents that will search 7+ platforms, call stores to verify prices, negotiate with sellers, and rank options. Features live browser automation, Agent Hub for cross-agent communication, and integrations with Twilio, and LLM APIs.",
-        repo: "https://github.com/MateDort/BargainHouse",
-        inProgress: "In Progress",
-        ux: {
-            userFlows: [
-                "User submits shopping request → Planner agent breaks down into tasks",
-                "Search agents query multiple platforms → Results aggregated in Agent Hub",
-                "Call agent verifies availability → Negotiate agent handles price discussions",
-                "User reviews ranked options → Checkout agent completes purchase"
-            ],
-            designDecisions: [
-                "Agent Hub dashboard provides real-time visual feedback with browser screenshots",
-                "Progress tracking shows step-by-step agent actions for transparency",
-                "Chakra UI components ensure consistent, accessible interface"
-            ],
-            highlights: [
-                "Designed intuitive Agent Hub for cross-agent communication visualization",
-                "Created live progress tracking UI with browser automation screenshots",
-                "Built responsive interface for monitoring multi-agent workflows"
-            ]
-        },
-        developer: {
-            architecture: [
-                "8 specialized agents: Planner, Search, Call, Negotiate, PriceTracker, SynthSummary, Arbiter, Checkout",
-                "Agent Hub for real-time cross-agent communication",
-                "Browser automation with Puppeteer for platform interactions"
-            ],
-            techStack: [
-                "Frontend: React + Chakra UI",
-                "Backend: Node.js/Express",
-                "Automation: Puppeteer, Raindrop MCP",
-                "APIs: Twilio, ElevenLabs, OpenAI/Gemini"
-            ],
-            highlights: [
-                "Building 8 specialized agents that automate shopping across Amazon, Best Buy, Facebook Marketplace, and more",
-                "Creating Agent Hub for real-time cross-agent communication and live visual feedback",
-                "Technical stack: React + Chakra UI, Node.js/Express, Puppeteer, Raindrop MCP, Twilio, ElevenLabs, OpenAI/Gemini"
-            ]
-        }
-    },
+    // {
+    //     title: "BargainHouse",
+    //     copy: "Multi-agent shopping system that finds, verifies, and negotiates deals across new and used marketplaces.",
+    //     summary: "Submitting to The AI Championship hackathon. Building 8 specialized agents that will search 7+ platforms, call stores to verify prices, negotiate with sellers, and rank options. Features live browser automation, Agent Hub for cross-agent communication, and integrations with Twilio, and LLM APIs.",
+    //     repo: "https://github.com/MateDort/BargainHouse",
+    //     inProgress: "In Progress",
+    //     ux: {
+    //         userFlows: [
+    //             "User submits shopping request → Planner agent breaks down into tasks",
+    //             "Search agents query multiple platforms → Results aggregated in Agent Hub",
+    //             "Call agent verifies availability → Negotiate agent handles price discussions",
+    //             "User reviews ranked options → Checkout agent completes purchase"
+    //         ],
+    //         designDecisions: [
+    //             "Agent Hub dashboard provides real-time visual feedback with browser screenshots",
+    //             "Progress tracking shows step-by-step agent actions for transparency",
+    //             "Chakra UI components ensure consistent, accessible interface"
+    //         ],
+    //         highlights: [
+    //             "Designed intuitive Agent Hub for cross-agent communication visualization",
+    //             "Created live progress tracking UI with browser automation screenshots",
+    //             "Built responsive interface for monitoring multi-agent workflows"
+    //         ]
+    //     },
+    //     developer: {
+    //         architecture: [
+    //             "8 specialized agents: Planner, Search, Call, Negotiate, PriceTracker, SynthSummary, Arbiter, Checkout",
+    //             "Agent Hub for real-time cross-agent communication",
+    //             "Browser automation with Puppeteer for platform interactions"
+    //         ],
+    //         techStack: [
+    //             "Frontend: React + Chakra UI",
+    //             "Backend: Node.js/Express",
+    //             "Automation: Puppeteer, Raindrop MCP",
+    //             "APIs: Twilio, ElevenLabs, OpenAI/Gemini"
+    //         ],
+    //         highlights: [
+    //             "Building 8 specialized agents that automate shopping across Amazon, Best Buy, Facebook Marketplace, and more",
+    //             "Creating Agent Hub for real-time cross-agent communication and live visual feedback",
+    //             "Technical stack: React + Chakra UI, Node.js/Express, Puppeteer, Raindrop MCP, Twilio, ElevenLabs, OpenAI/Gemini"
+    //         ]
+    //     }
+    // },
     {
         title: "TossWise",
         copy: "AI-powered smart trash bin that uses computer vision and natural language to classify waste in real time.",
@@ -116,6 +116,50 @@ const projectEntries = [
         }
     },
     {
+        title: "NeuraNote",
+        copy: "Cross-platform mobile app that uses AI to transform audio recordings into structured notes, quizzes, and study materials.",
+        summary: "Built with React Native and Expo, NeuraNote combines real-time transcription, GPT-4, and offline AI to support learning workflows. Features live transcription, AI note generation, interactive quizzes, multi-language support, and offline functionality with local AI fallback.",
+        repo: "https://github.com/MateDort/SmartNotes",
+        ux: {
+            userFlows: [
+                "First-time user: Login/Signup → Onboarding with technique selection → Personalized greeting on Home",
+                "Recording: Home → Start Recording → Live Transcription → AI Chat (optional) → Stop → Processing with mini-game → Notes Screen",
+                "Study: Home → Select Note → Notes Screen → [Notes | Must Know | Quiz | AI Chat | Transcript] tabs"
+            ],
+            designDecisions: [
+                "Minimal cognitive load: clear actions, immediate feedback with typewriter greeting effect",
+                "Progressive disclosure: tab-based navigation (5 tabs) shows what's needed when needed",
+                "Delightful waiting: T-Rex mini-game during processing reduces perceived wait time",
+                "Color system: Sky Blue (#9DBCD4) for trust, Beige (#F8F5F0) background reduces eye strain, Graphite (#2C2C2C) text for readability"
+            ],
+            highlights: [
+                "Designed responsive system supporting 5 screen size categories (Very Small to Large Tablet)",
+                "Created T-Rex mini-game during processing to reduce perceived wait time and increase engagement",
+                "Built tab-based navigation with smooth transitions for intuitive feature discovery"
+            ]
+        },
+        developer: {
+            architecture: [
+                "Hybrid transcription: Device transcript for speed, Whisper API for accuracy (< 14 min recordings)",
+                "Hybrid AI system: GPT-4 + Serper API (online), Ollama/Llama 3.2 (offline) with seamless fallback",
+                "SQLite database with user-scoped data: users, notes, quiz_results, chat_messages, game_scores tables",
+                "React Native 0.81.5 + Expo SDK 54 with TypeScript, React Navigation 7.x, i18next for internationalization"
+            ],
+            techStack: [
+                "Frontend: React Native, TypeScript 5.9.2, Expo SDK 54",
+                "Database: SQLite (expo-sqlite) with migration system",
+                "AI Services: OpenAI GPT-4, Whisper API, Ollama (offline fallback)",
+                "Audio: Expo AV, Expo Audio for recording and playback",
+                "Navigation: React Navigation 7.x, State: React Hooks + Context API"
+            ],
+            highlights: [
+                "Implemented hybrid transcription strategy: device transcript for instant feedback, Whisper for accuracy, automatic fallback for long recordings",
+                "Built graceful error handling with retry logic, exponential backoff, and offline support via Ollama",
+                "Created responsive design system with dynamic font scaling and flexible layouts for 5 screen size categories"
+            ]
+        }
+    },
+    {
         title: "C.L.I.M.A",
         copy: "Precision agriculture platform that helps farmers make smarter decisions using NASA technology.",
         summary: "2nd place at HackATL 2025 (NASA Technology Transfer Program). Built in 48 hours with teammates Brody Weinfurtner, Jack Bashaw, and Leah Loukedis. Combines two NASA technologies: HSEG (Hierarchical Segmentation Engine) for pixel-level farmland segmentation into distinct soil and crop zones, and MERRA/AS & Climate Analytics as a Service for weather pattern forecasting. Provides hyper-local, data-driven insights so farmers can optimize irrigation, fertilizer, and planting strategies while preparing for climate challenges.",
@@ -158,47 +202,50 @@ const projectEntries = [
             ]
         }
     },
-    // {
-    //     title: "SkillShipping",
-    //     copy: "Talent exchange marketplace matching athletes with emerging startups.",
-    //     summary: "Rapid experimentation led to a matchmaking flow inspired by relay races.",
-    //     repo: "https://github.com/MateDort/SkillShipping",
-    //     ux: {
-    //         userFlows: [
-    //             "Athlete creates profile with video intro → Startup browses talent pool",
-    //             "Matchmaking algorithm suggests matches → Both parties review profiles",
-    //             "Contextual video intros provide authentic connection → Automated contracts generated",
-    //             "Match confirmed → Contract packets ship in <5 minutes"
-    //         ],
-    //         designDecisions: [
-    //             "Matchmaking flow inspired by relay races creates engaging user experience",
-    //             "Contextual video intros replace static profiles for better connection",
-    //             "Streamlined contract flow reduces friction in the matching process"
-    //         ],
-    //         highlights: [
-    //             "Designed matchmaking flow inspired by relay races",
-    //             "Tripled weekly matches using contextual video intros",
-    //             "Created streamlined contract generation process"
-    //         ]
-    //     },
-    //     developer: {
-    //         architecture: [
-    //             "Matchmaking algorithm for athlete-startup pairing",
-    //             "Video upload and processing system",
-    //             "Automated contract generation and delivery"
-    //         ],
-    //         techStack: [
-    //             "Video Processing: Contextual video intro system",
-    //             "Automation: Contract packet generation",
-    //             "Matching: Algorithm-based pairing system"
-    //         ],
-    //         highlights: [
-    //             "Automated contract packets to ship in <5 minutes",
-    //             "Built video processing pipeline for contextual intros",
-    //             "Developed matchmaking algorithm that tripled weekly matches"
-    //         ]
-    //     }
-    // },
+    {
+        title: "SkillShipping",
+        copy: "Adaptive learning mobile app that uses AI to create personalized, dynamic learning experiences that adapt in real-time to each learner's unique profile.",
+        summary: "Built with React Native and Expo, SkillShipping transforms traditional static courses into intelligent, evolving learning journeys. Features include adaptive content generation, comprehensive file processing for project grading with GPT Vision, real-time learning analytics, and a Learning DNA system that creates unique learning identities.",
+        repo: "https://github.com/MateDort/SkillShipping",
+        ux: {
+            userFlows: [
+                "Onboarding: Welcome → Skill Input → Level Selection → Duration Preference → Goal Setting → Content Type Preferences → Course Generation (30-60s)",
+                "Learning Loop: Course Screen → 'Up Next' Ribbon → Lecture Screen (Reading/Quiz/Project) → Completion & Feedback → Next Content Generation (Adaptive) → Loop continues",
+                "Project Grading: Project Screen → Upload Files (PDF/DOCX/Images) → File Preview → Grade Project → Processing → Results (Pass/Fail, Score, Feedback) → Re-grade if needed"
+            ],
+            designDecisions: [
+                "Invisible intelligence: Adaptive system works behind scenes—users experience content that 'just feels right' without seeing complex algorithms",
+                "Progressive disclosure: Single-page onboarding with visual progress, advanced features (Learning DNA, 3D Map) unlock after engagement",
+                "Enhanced reading format: Short paragraphs, strategic whitespace, ASCII diagrams, micro-hooks, conversational tone—feels like discovery, not homework",
+                "Real project grading: Native file pickers, GPT Vision for images, detailed feedback showing what GPT 'saw', re-grade option reduces anxiety"
+            ],
+            highlights: [
+                "Designed adaptive learning system with invisible intelligence—users feel personalized content without seeing the algorithm",
+                "Created enhanced reading format with rhythm, pacing, ASCII diagrams, and micro-hooks that increased content engagement",
+                "Built intelligent project grading with multi-format support (PDF, DOCX, images), GPT Vision integration, and robust score extraction"
+            ]
+        },
+        developer: {
+            architecture: [
+                "Adaptive Content Generation: ComprehensiveLearningTracker analyzes learning data, identifies gaps, builds personalized GPT prompts, validates content alignment",
+                "Multi-layer file reading: Layer 1 (direct text), Layer 2 (PDFLib for binary PDFs), Layer 3 (smart filename analysis) with graceful fallbacks",
+                "GPT Vision integration: Base64 image encoding, multi-image support, detailed visual content analysis for project grading",
+                "SQLite database: learning_sessions, ai_interactions, quiz_attempts, project_submissions, user_progress tables with user-scoped data"
+            ],
+            techStack: [
+                "Frontend: React Native 0.81.4, Expo ~54.0.12, TypeScript 5.9.2",
+                "AI Services: OpenAI GPT-4, GPT-4o (Vision), Whisper API",
+                "File Processing: expo-document-picker, expo-image-picker, expo-file-system/legacy, react-native-pdf-lib",
+                "Database: Expo SQLite 16.0.8 with migration system",
+                "State: React Hooks (useState, useRef, useEffect), Context API"
+            ],
+            highlights: [
+                "Implemented hybrid adaptive system: real-time learning analysis tracks every interaction, gap-focused content addresses weaknesses, goal-oriented alignment",
+                "Built multi-layer file reading with fallbacks: ~90% success rate, handles PDFs (binary/text), DOCX, images with base64 encoding for GPT Vision",
+                "Created robust score extraction system: multi-pattern regex parsing from free-form GPT responses, 80% pass/fail threshold, comprehensive error handling"
+            ]
+        }
+    },
     // {
     //     title: "NeuraNote",
     //     copy: "Thought-capture notebook with on-device vector embeddings.",

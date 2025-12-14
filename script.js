@@ -119,6 +119,8 @@ const projectEntries = [
         title: "NeuraNote",
         copy: "Cross-platform mobile app that uses AI to transform audio recordings into structured notes, quizzes, and study materials.",
         summary: "Built with React Native and Expo, NeuraNote combines real-time transcription, GPT-4, and offline AI to support learning workflows. Features live transcription, AI note generation, interactive quizzes, multi-language support, and offline functionality with local AI fallback.",
+        figma: "https://www.figma.com/proto/7HUMwCiDgio43IpiVxwQG0/SmartNote?node-id=0-1&t=mvhS5JKxbmjUedAf-1",
+        figmaLabel: "Figma",
         repo: "https://github.com/MateDort/SmartNotes",
         ux: {
             userFlows: [
@@ -406,6 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectCopy = document.getElementById('project-copy');
     const projectSummary = document.getElementById('project-summary');
     const projectHighlights = document.getElementById('project-highlights');
+    const figmaLink = document.getElementById('figma-link');
     const repoLink = document.getElementById('repo-link');
     const devpostLink = document.getElementById('devpost-link');
     const viewToggle = document.getElementById('view-toggle');
@@ -527,6 +530,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Links
+            if (figmaLink) {
+                if (entry.figma) {
+                    figmaLink.href = entry.figma;
+                    if (entry.figmaLabel) {
+                        figmaLink.textContent = entry.figmaLabel;
+                    } else {
+                        figmaLink.textContent = "Figma";
+                    }
+                    figmaLink.style.display = 'block';
+                } else {
+                    figmaLink.style.display = 'none';
+                }
+            }
             if (repoLink && entry.repo) {
                 repoLink.href = entry.repo;
                 if (entry.repoLabel) {

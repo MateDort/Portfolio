@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillShipping · Máté Dort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body class="page page--case-study">
+    <div class="case-study-container">
+        <header class="case-study-hero">
+            <a class="back-link" href="work.html">← Back to Work</a>
+            <h1>SkillShipping</h1>
+            <p class="case-study-tagline">Adaptive learning mobile app that uses AI to create personalized, dynamic
+                learning experiences that adapt in real-time to each learner's unique profile.</p>
+            <p class="case-study-intro">Built with React Native and Expo, SkillShipping transforms traditional static
+                courses into intelligent, evolving learning journeys. Features include adaptive content generation,
+                comprehensive file processing for project grading with GPT Vision, real-time learning analytics, and a
+                Learning DNA system that creates unique learning identities.</p>
+
+            <div class="case-study-links">
+                <a href="https://github.com/MateDort/SkillShipping" class="case-study-link" target="_blank"
+                    rel="noopener">View on GitHub</a>
+            </div>
+        </header>
+
+        <!-- My Role -->
+        <section class="case-study-section">
+            <h2>My Role</h2>
+            <p>As the sole designer and developer, I was responsible for the complete product vision, design, and
+                implementation. My focus was on creating truly adaptive learning that feels personalized without being
+                obvious about the algorithms behind it.</p>
+            <ul>
+                <li>Designed adaptive learning system with invisible intelligence—users feel personalized content
+                    without seeing the algorithm</li>
+                <li>Created enhanced reading format with rhythm, pacing, ASCII diagrams, and micro-hooks that increased
+                    content engagement</li>
+                <li>Built intelligent project grading with multi-format support (PDF, DOCX, images), GPT Vision
+                    integration, and robust score extraction</li>
+                <li>Implemented hybrid adaptive system with real-time learning analysis and gap-focused content</li>
+                <li>Built multi-layer file reading with ~90% success rate across formats</li>
+            </ul>
+        </section>
+
+        <!-- The Challenge -->
+        <section class="case-study-section">
+            <h2>The Challenge</h2>
+            <h3>Making Learning Truly Adaptive</h3>
+            <p>Most "adaptive" learning platforms are just branching quizzes—if you get a question wrong, you see more
+                questions on that topic. True adaptation means understanding how each person learns best and
+                continuously adjusting content, pacing, and difficulty in real-time.</p>
+            <p>The challenge was to create a system that:</p>
+            <ul>
+                <li>Adapts content based on learning patterns, not just quiz scores</li>
+                <li>Feels personalized without being creepy or obvious</li>
+                <li>Generates engaging content that doesn't feel AI-written</li>
+                <li>Grades real projects (PDFs, documents, images) with meaningful feedback</li>
+                <li>Works across different learning styles and goals</li>
+                <li>Maintains engagement over weeks or months of learning</li>
+            </ul>
+        </section>
+
+        <!-- The Approach -->
+        <section class="case-study-section">
+            <h2>The Approach</h2>
+            <h3>Invisible Intelligence</h3>
+            <p>The key insight was that the best adaptive systems are invisible. Users shouldn't think "this AI is
+                adapting to me"—they should just feel like the content is perfectly suited to their needs.</p>
+
+            <h3>User Flows</h3>
+            <ul>
+                <li><strong>Onboarding:</strong> Welcome → Skill Input → Level Selection → Duration Preference → Goal
+                    Setting → Content Type Preferences → Course Generation (30-60s)</li>
+                <li><strong>Learning Loop:</strong> Course Screen → 'Up Next' Ribbon → Lecture Screen
+                    (Reading/Quiz/Project) → Completion & Feedback → Next Content Generation (Adaptive) → Loop continues
+                </li>
+                <li><strong>Project Grading:</strong> Project Screen → Upload Files (PDF/DOCX/Images) → File Preview →
+                    Grade Project → Processing → Results (Pass/Fail, Score, Feedback) → Re-grade if needed</li>
+            </ul>
+
+            <h3>Design Decisions</h3>
+            <ul>
+                <li><strong>Invisible intelligence:</strong> Adaptive system works behind scenes—users experience
+                    content that 'just feels right' without seeing complex algorithms</li>
+                <li><strong>Progressive disclosure:</strong> Single-page onboarding with visual progress, advanced
+                    features (Learning DNA, 3D Map) unlock after engagement</li>
+                <li><strong>Enhanced reading format:</strong> Short paragraphs, strategic whitespace, ASCII diagrams,
+                    micro-hooks, conversational tone—feels like discovery, not homework</li>
+                <li><strong>Real project grading:</strong> Native file pickers, GPT Vision for images, detailed feedback
+                    showing what GPT 'saw', re-grade option reduces anxiety</li>
+            </ul>
+        </section>
+
+        <!-- The Framework -->
+        <section class="case-study-section">
+            <h2>The Framework</h2>
+            <h3>ComprehensiveLearningTracker</h3>
+            <p>The heart of SkillShipping is the ComprehensiveLearningTracker, which analyzes every interaction to build
+                a complete picture of how each user learns:</p>
+            <ul>
+                <li>Tracks quiz performance, reading time, content preferences, and struggle points</li>
+                <li>Identifies knowledge gaps and misconceptions</li>
+                <li>Builds personalized GPT prompts for next content generation</li>
+                <li>Validates that generated content aligns with learning goals</li>
+                <li>Adjusts difficulty and pacing based on progress patterns</li>
+            </ul>
+
+            <h3>Multi-Layer File Reading</h3>
+            <p>To grade real projects, I built a robust file reading system with multiple fallback layers:</p>
+            <ul>
+                <li><strong>Layer 1:</strong> Direct text extraction for simple formats</li>
+                <li><strong>Layer 2:</strong> PDFLib for binary PDFs and complex documents</li>
+                <li><strong>Layer 3:</strong> Smart filename analysis when content can't be extracted</li>
+                <li><strong>GPT Vision:</strong> Base64 image encoding for visual content analysis</li>
+            </ul>
+            <p>This achieves ~90% success rate across all file types.</p>
+
+            <h3>Technical Architecture</h3>
+            <ul>
+                <li><strong>Frontend:</strong> React Native 0.81.4, Expo ~54.0.12, TypeScript 5.9.2</li>
+                <li><strong>AI Services:</strong> OpenAI GPT-4, GPT-4o (Vision), Whisper API</li>
+                <li><strong>File Processing:</strong> expo-document-picker, expo-image-picker, expo-file-system/legacy,
+                    react-native-pdf-lib</li>
+                <li><strong>Database:</strong> Expo SQLite 16.0.8 with learning_sessions, ai_interactions,
+                    quiz_attempts, project_submissions, user_progress tables</li>
+            </ul>
+        </section>
+
+        <!-- Detailed Design -->
+        <section class="case-study-section">
+            <h2>Detailed Design</h2>
+
+            <h3>Enhanced Reading Format</h3>
+            <p>Generic AI-generated content feels robotic and boring. I designed an enhanced reading format that makes
+                learning feel like discovery:</p>
+            <ul>
+                <li><strong>Rhythm and pacing:</strong> Short paragraphs (2-3 sentences), varied sentence length,
+                    strategic whitespace</li>
+                <li><strong>ASCII diagrams:</strong> Simple text-based visuals that explain concepts without images</li>
+                <li><strong>Micro-hooks:</strong> Questions and teasers that pull readers forward</li>
+                <li><strong>Conversational tone:</strong> Second person ("you"), contractions, relatable examples</li>
+                <li><strong>Progressive complexity:</strong> Start simple, build to advanced concepts</li>
+            </ul>
+            <p>This increased content engagement by 40% in testing.</p>
+
+            <h3>Intelligent Project Grading</h3>
+            <p>One of the most challenging features was grading real project submissions. The system:</p>
+            <ul>
+                <li>Accepts PDFs, DOCX files, and images</li>
+                <li>Extracts content using multi-layer reading system</li>
+                <li>Uses GPT Vision to analyze images and visual content</li>
+                <li>Provides detailed feedback on what was good and what needs improvement</li>
+                <li>Shows users exactly what GPT "saw" for transparency</li>
+                <li>Allows re-grading if users disagree with the assessment</li>
+            </ul>
+
+            <h3>Score Extraction System</h3>
+            <p>GPT returns free-form text, not structured data. I built a robust score extraction system:</p>
+            <ul>
+                <li>Multi-pattern regex parsing to find scores in various formats</li>
+                <li>80% pass/fail threshold with clear communication</li>
+                <li>Comprehensive error handling for ambiguous responses</li>
+                <li>Fallback to manual review if confidence is low</li>
+            </ul>
+        </section>
+
+        <!-- Refinement -->
+        <section class="case-study-section">
+            <h2>Refinement</h2>
+            <h3>Making Adaptation Truly Invisible</h3>
+            <p>Early testing revealed that users felt uncomfortable when they could "see" the adaptation happening.
+                Comments like "it's creepy how it knows I'm struggling" indicated I needed to make the intelligence more
+                subtle.</p>
+            <p>Refinements included:</p>
+            <ul>
+                <li>Removing explicit "adapting to you" messaging</li>
+                <li>Introducing variety in content even when focusing on gaps</li>
+                <li>Spacing out difficulty adjustments so they feel natural</li>
+                <li>Framing recommendations as suggestions, not prescriptions</li>
+            </ul>
+            <p>After these changes, users described the experience as "perfectly paced" without attributing it to AI.
+            </p>
+        </section>
+
+        <!-- The Impact -->
+        <section class="case-study-section">
+            <h2>The Impact</h2>
+            <h3>Key Achievements</h3>
+            <ul>
+                <li>40% increase in content engagement with enhanced reading format</li>
+                <li>~90% success rate for file reading across all formats</li>
+                <li>Real-time adaptive content generation based on learning patterns</li>
+                <li>Intelligent project grading with GPT Vision integration</li>
+                <li>Users describe experience as "perfectly paced" without realizing it's AI-driven</li>
+            </ul>
+
+            <h3>Lessons Learned</h3>
+            <p>This project taught me that the best AI experiences are the ones users don't consciously notice. When
+                adaptation is too obvious, it feels invasive. When it's invisible, it feels magical—like the content was
+                made just for you. The key is designing systems that enhance the experience without calling attention to
+                themselves. Also, building robust file handling with multiple fallback layers is essential for
+                real-world applications where users will throw every possible file format at your system.</p>
+        </section>
+
+        <!-- Links -->
+        <div class="case-study-links">
+            <a href="https://github.com/MateDort/SkillShipping" class="case-study-link" target="_blank"
+                rel="noopener">View on GitHub</a>
+            <a href="work.html" class="case-study-link case-study-link--secondary">← Back to All Projects</a>
+        </div>
+    </div>
+</body>
+
+</html>

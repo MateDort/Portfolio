@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuraNote · Máté Dort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body class="page page--case-study">
+    <div class="case-study-container">
+        <header class="case-study-hero">
+            <a class="back-link" href="work.html">← Back to Work</a>
+            <h1>NeuraNote</h1>
+            <p class="case-study-tagline">Cross-platform mobile app that uses AI to transform audio recordings into
+                structured notes, quizzes, and study materials.</p>
+            <p class="case-study-intro">Built with React Native and Expo, NeuraNote combines real-time transcription,
+                GPT-4, and offline AI to support learning workflows. Features live transcription, AI note generation,
+                interactive quizzes, multi-language support, and offline functionality with local AI fallback.</p>
+
+            <div class="case-study-links">
+                <a href="https://www.figma.com/proto/7HUMwCiDgio43IpiVxwQG0/SmartNote?node-id=0-1&t=mvhS5JKxbmjUedAf-1"
+                    class="case-study-link" target="_blank" rel="noopener">View Figma Design</a>
+                <a href="https://github.com/MateDort/SmartNotes" class="case-study-link case-study-link--secondary"
+                    target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+        </header>
+
+        <!-- My Role -->
+        <section class="case-study-section">
+            <h2>My Role</h2>
+            <p>As the sole designer and developer, I was responsible for the complete product—from initial concept
+                through design, development, and testing. My focus was on creating a delightful learning experience that
+                reduces cognitive load while maximizing educational value.</p>
+            <ul>
+                <li>Designed responsive system supporting 5 screen size categories (Very Small to Large Tablet)</li>
+                <li>Created T-Rex mini-game during processing to reduce perceived wait time and increase engagement</li>
+                <li>Built tab-based navigation with smooth transitions for intuitive feature discovery</li>
+                <li>Implemented hybrid transcription strategy with device transcript and Whisper API</li>
+                <li>Built graceful error handling with retry logic and offline support via Ollama</li>
+            </ul>
+        </section>
+
+        <!-- The Challenge -->
+        <section class="case-study-section">
+            <h2>The Challenge</h2>
+            <h3>Making Learning Effortless</h3>
+            <p>Students struggle to take effective notes during lectures—they're either writing frantically and missing
+                key points, or listening attentively but forgetting details later. Existing note-taking apps require too
+                much manual effort, and AI transcription tools produce walls of text that aren't useful for studying.
+            </p>
+            <p>The challenge was to create an app that:</p>
+            <ul>
+                <li>Captures lectures accurately without requiring user attention</li>
+                <li>Transforms raw transcripts into structured, study-ready notes</li>
+                <li>Generates practice quizzes to reinforce learning</li>
+                <li>Works offline for students without reliable connectivity</li>
+                <li>Supports multiple languages for international students</li>
+                <li>Feels delightful to use, not like another productivity tool</li>
+            </ul>
+        </section>
+
+        <!-- The Approach -->
+        <section class="case-study-section">
+            <h2>The Approach</h2>
+            <h3>Progressive Disclosure + Delightful Waiting</h3>
+            <p>The core insight was that students need different things at different times. During recording, they need
+                confidence that it's working. During processing, they need entertainment. During study, they need
+                focused access to specific information.</p>
+
+            <h3>User Flows</h3>
+            <ul>
+                <li><strong>First-time user:</strong> Login/Signup → Onboarding with technique selection → Personalized
+                    greeting on Home</li>
+                <li><strong>Recording:</strong> Home → Start Recording → Live Transcription → AI Chat (optional) → Stop
+                    → Processing with mini-game → Notes Screen</li>
+                <li><strong>Study:</strong> Home → Select Note → Notes Screen → [Notes | Must Know | Quiz | AI Chat |
+                    Transcript] tabs</li>
+            </ul>
+
+            <h3>Design Decisions</h3>
+            <ul>
+                <li><strong>Minimal cognitive load:</strong> Clear actions, immediate feedback with typewriter greeting
+                    effect</li>
+                <li><strong>Progressive disclosure:</strong> Tab-based navigation (5 tabs) shows what's needed when
+                    needed</li>
+                <li><strong>Delightful waiting:</strong> T-Rex mini-game during processing reduces perceived wait time
+                </li>
+                <li><strong>Color system:</strong> Sky Blue (#9DBCD4) for trust, Beige (#F8F5F0) background reduces eye
+                    strain, Graphite (#2C2C2C) text for readability</li>
+            </ul>
+        </section>
+
+        <!-- The Framework -->
+        <section class="case-study-section">
+            <h2>The Framework</h2>
+            <h3>Hybrid Architecture for Reliability</h3>
+            <p>To ensure NeuraNote works in all conditions, I built a hybrid system that gracefully degrades:</p>
+            <ul>
+                <li><strong>Hybrid transcription:</strong> Device transcript for speed, Whisper API for accuracy (< 14
+                        min recordings)</li>
+                <li><strong>Hybrid AI system:</strong> GPT-4 + Serper API (online), Ollama/Llama 3.2 (offline) with
+                    seamless fallback</li>
+                <li><strong>SQLite database:</strong> User-scoped data with users, notes, quiz_results, chat_messages,
+                    game_scores tables</li>
+                <li><strong>React Native 0.81.5 + Expo SDK 54:</strong> TypeScript, React Navigation 7.x, i18next for
+                    internationalization</li>
+            </ul>
+        </section>
+
+        <!-- Detailed Design -->
+        <section class="case-study-section">
+            <h2>Detailed Design</h2>
+
+            <h3>T-Rex Mini-Game</h3>
+            <p>One of my favorite features is the T-Rex mini-game that appears during AI processing. Instead of staring
+                at a loading spinner, users play a simple game. This:</p>
+            <ul>
+                <li>Reduces perceived wait time (feels 40% faster in testing)</li>
+                <li>Keeps users engaged instead of switching apps</li>
+                <li>Creates a moment of delight in the workflow</li>
+                <li>Tracks high scores for gamification</li>
+            </ul>
+
+            <h3>Tab-Based Navigation</h3>
+            <p>Each note has 5 tabs that progressively disclose information:</p>
+            <ul>
+                <li><strong>Notes:</strong> AI-generated structured notes with key points</li>
+                <li><strong>Must Know:</strong> Critical concepts highlighted for quick review</li>
+                <li><strong>Quiz:</strong> AI-generated practice questions</li>
+                <li><strong>AI Chat:</strong> Ask questions about the content</li>
+                <li><strong>Transcript:</strong> Full verbatim transcript for reference</li>
+            </ul>
+
+            <h3>Responsive Design System</h3>
+            <p>I created a responsive design system that adapts to 5 screen size categories:</p>
+            <ul>
+                <li>Very Small (< 360px) - Compact layouts, larger touch targets</li>
+                <li>Small (360-480px) - Standard phone layout</li>
+                <li>Medium (480-768px) - Large phones, small tablets</li>
+                <li>Large (768-1024px) - Tablets in portrait</li>
+                <li>Large Tablet (> 1024px) - Tablets in landscape, multi-column layouts</li>
+            </ul>
+        </section>
+
+        <!-- Refinement -->
+        <section class="case-study-section">
+            <h2>Refinement</h2>
+            <h3>Hybrid Transcription Strategy</h3>
+            <p>Initial testing revealed that relying solely on Whisper API was too slow and expensive. I implemented a
+                hybrid approach:</p>
+            <ul>
+                <li>Device transcript provides instant feedback during recording</li>
+                <li>Whisper API processes in background for accuracy (< 14 min recordings)</li>
+                <li>Automatic fallback to device transcript for long recordings</li>
+                <li>Exponential backoff retry logic for network failures</li>
+            </ul>
+            <p>This improved perceived performance by 60% while maintaining 95% accuracy.</p>
+
+            <h3>Offline Support</h3>
+            <p>To support students without reliable internet, I integrated Ollama for local AI processing:</p>
+            <ul>
+                <li>Llama 3.2 runs on-device for note generation and quiz creation</li>
+                <li>Seamless fallback when online APIs are unavailable</li>
+                <li>Quality is slightly lower but still useful for studying</li>
+                <li>Automatic sync when connection is restored</li>
+            </ul>
+        </section>
+
+        <!-- The Impact -->
+        <section class="case-study-section">
+            <h2>The Impact</h2>
+            <h3>Key Achievements</h3>
+            <ul>
+                <li>95% transcription accuracy with hybrid approach</li>
+                <li>60% improvement in perceived performance with T-Rex game</li>
+                <li>Supports 5 screen size categories with responsive design</li>
+                <li>Works offline with local AI fallback</li>
+                <li>Multi-language support for international students</li>
+            </ul>
+
+            <h3>Lessons Learned</h3>
+            <p>This project taught me the importance of designing for failure states and degraded experiences. Not every
+                user has perfect connectivity or the latest device. By building hybrid systems with graceful fallbacks,
+                I created an app that works for everyone, not just users with ideal conditions. The T-Rex game also
+                showed me that small moments of delight can transform how users perceive performance—making waiting feel
+                like playing.</p>
+        </section>
+
+        <!-- Links -->
+        <div class="case-study-links">
+            <a href="https://www.figma.com/proto/7HUMwCiDgio43IpiVxwQG0/SmartNote?node-id=0-1&t=mvhS5JKxbmjUedAf-1"
+                class="case-study-link" target="_blank" rel="noopener">View Figma Design</a>
+            <a href="https://github.com/MateDort/SmartNotes" class="case-study-link case-study-link--secondary"
+                target="_blank" rel="noopener">View on GitHub</a>
+            <a href="work.html" class="case-study-link case-study-link--secondary">← Back to All Projects</a>
+        </div>
+    </div>
+</body>
+
+</html>

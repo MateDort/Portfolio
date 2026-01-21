@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TossWise · Máté Dort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body class="page page--case-study">
+    <div class="case-study-container">
+        <header class="case-study-hero">
+            <a class="back-link" href="work.html">← Back to Work</a>
+            <h1>TossWise</h1>
+            <span class="project-badge project-badge--award">👑 Winner of Best Use of Gemini API at Emory Hacks
+                2025</span>
+            <p class="case-study-tagline">AI-powered smart trash bin that uses computer vision and natural language to
+                classify waste in real time.</p>
+            <p class="case-study-intro">Built in 36 hours at Emory Hacks 2025, TossWise is a hands-free system that
+                identifies waste, guides disposal through voice feedback, and adapts to location-specific bin
+                configurations. The project won Best Use of Gemini API for its innovative application of Google's
+                multimodal AI.</p>
+
+            <div class="case-study-links">
+                <a href="https://github.com/VihaanIyer/TossWise-" class="case-study-link" target="_blank"
+                    rel="noopener">View on GitHub</a>
+                <a href="https://devpost.com/software/tosswise" class="case-study-link case-study-link--secondary"
+                    target="_blank" rel="noopener">View on Devpost</a>
+            </div>
+        </header>
+
+        <!-- My Role -->
+        <section class="case-study-section">
+            <h2>My Role</h2>
+            <p>As the UX designer and computer vision specialist on the team, I was responsible for the user experience
+                design, visual feedback systems, and improving the object detection pipeline. I worked alongside
+                teammates to create a seamless, intuitive waste sorting experience.</p>
+            <ul>
+                <li>Designed the live trash falling animation and UI feedback system</li>
+                <li>Created the contamination percentage display for user education</li>
+                <li>Improved detection accuracy using trained Roboflow model</li>
+                <li>Developed adaptive onboarding system for different bin configurations</li>
+                <li>Integrated YOLOv8 with Roboflow for enhanced object detection</li>
+            </ul>
+        </section>
+
+        <!-- The Challenge -->
+        <section class="case-study-section">
+            <h2>The Challenge</h2>
+            <h3>Making Recycling Effortless and Accurate</h3>
+            <p>Contamination is the biggest problem in recycling—when people put the wrong items in recycling bins,
+                entire batches can be rejected and sent to landfills. Studies show that up to 25% of recycling is
+                contaminated, costing cities millions and undermining environmental efforts.</p>
+            <p>The challenge was to create a system that:</p>
+            <ul>
+                <li>Accurately identifies waste types in real-time, even with varying lighting and angles</li>
+                <li>Provides immediate, clear guidance without requiring user input</li>
+                <li>Works hands-free to maintain hygiene</li>
+                <li>Adapts to different bin configurations (2-bin, 3-bin, 4-bin systems)</li>
+                <li>Educates users about contamination without being preachy</li>
+                <li>Completes the entire interaction in under 3 seconds</li>
+            </ul>
+        </section>
+
+        <!-- The Approach -->
+        <section class="case-study-section">
+            <h2>The Approach</h2>
+            <h3>Multimodal AI + Delightful Feedback</h3>
+            <p>We combined computer vision, AI classification, and voice guidance to create a seamless experience. The
+                key insight was that users need both visual and audio feedback—visual to confirm what the system "sees"
+                and audio to guide action without looking at a screen.</p>
+
+            <h3>Technical Architecture</h3>
+            <ul>
+                <li><strong>YOLOv8 Person Detection</strong> - Triggers the system when someone approaches with waste
+                </li>
+                <li><strong>Roboflow-Trained Model</strong> - Custom-trained to recognize common waste items and improve
+                    accuracy</li>
+                <li><strong>Google Gemini Vision API</strong> - Classifies waste type and provides reasoning</li>
+                <li><strong>ElevenLabs TTS</strong> - Natural voice guidance ("Please place in recycling bin")</li>
+                <li><strong>Arduino Integration</strong> - Controls bin lids and physical feedback</li>
+            </ul>
+        </section>
+
+        <!-- The Discovery -->
+        <section class="case-study-section">
+            <h2>The Discovery</h2>
+            <h3>Understanding User Behavior</h3>
+            <p>Through observation and testing, we discovered several key insights:</p>
+            <ul>
+                <li>Users need confirmation that the system "saw" their item—hence the live camera feed</li>
+                <li>Audio guidance is more effective than visual alone when hands are full</li>
+                <li>People want to know WHY something goes in a particular bin (education opportunity)</li>
+                <li>Bin configurations vary widely by location—system needs to be adaptable</li>
+                <li>Speed is critical—any delay over 3 seconds feels frustrating</li>
+            </ul>
+        </section>
+
+        <!-- Detailed Design -->
+        <section class="case-study-section">
+            <h2>Detailed Design</h2>
+
+            <h3>Live Trash Falling Animation</h3>
+            <p>One of my key contributions was designing the visual feedback system. When the AI classifies an item, the
+                UI shows an animation of the trash falling into the correct bin. This serves multiple purposes:</p>
+            <ul>
+                <li>Confirms the system processed the request</li>
+                <li>Visually reinforces which bin to use</li>
+                <li>Creates a satisfying, game-like interaction</li>
+                <li>Reduces perceived wait time during processing</li>
+            </ul>
+
+            <h3>Contamination Percentage Display</h3>
+            <p>To educate users without lecturing, I designed a contamination percentage indicator that shows how well
+                the facility is doing overall. This:</p>
+            <ul>
+                <li>Creates awareness about the contamination problem</li>
+                <li>Gamifies correct sorting (users want to improve the percentage)</li>
+                <li>Provides positive reinforcement when percentage improves</li>
+                <li>Builds community around environmental responsibility</li>
+            </ul>
+
+            <h3>Adaptive Onboarding System</h3>
+            <p>Different locations have different bin configurations. I created an onboarding flow that lets
+                administrators configure the system for their specific setup:</p>
+            <ul>
+                <li>2-bin system (trash, recycling)</li>
+                <li>3-bin system (trash, recycling, compost)</li>
+                <li>4-bin system (trash, recycling, compost, glass)</li>
+                <li>Custom configurations for specialized facilities</li>
+            </ul>
+        </section>
+
+        <!-- Refinement -->
+        <section class="case-study-section">
+            <h2>Refinement</h2>
+            <h3>Improving Detection Accuracy</h3>
+            <p>Initial tests showed that generic object detection models struggled with waste items, especially when
+                partially obscured or at odd angles. I addressed this by:</p>
+            <ul>
+                <li>Training a custom Roboflow model on 500+ images of common waste items</li>
+                <li>Integrating YOLOv8 for faster, more accurate person and object detection</li>
+                <li>Creating a two-stage pipeline: YOLOv8 for initial detection, Gemini Vision for classification</li>
+                <li>Adding confidence thresholds to request re-positioning if uncertain</li>
+            </ul>
+            <p>These improvements increased classification accuracy from ~70% to ~92% in our testing.</p>
+        </section>
+
+        <!-- The Impact -->
+        <section class="case-study-section">
+            <h2>The Impact</h2>
+            <h3>Award-Winning Innovation</h3>
+            <p>TossWise won Best Use of Gemini API at Emory Hacks 2025, with judges praising the practical application
+                of multimodal AI and the thoughtful UX design. The project demonstrated how AI can solve real
+                environmental problems while creating delightful user experiences.</p>
+
+            <h3>Key Achievements</h3>
+            <ul>
+                <li>92% classification accuracy in testing</li>
+                <li>Average interaction time under 2.5 seconds</li>
+                <li>Positive user feedback on the visual feedback system</li>
+                <li>Adaptable to any bin configuration</li>
+                <li>Won Best Use of Gemini API at Emory Hacks 2025</li>
+            </ul>
+
+            <h3>Lessons Learned</h3>
+            <p>This project reinforced the importance of immediate, multimodal feedback in physical computing
+                applications. Users need to see, hear, and feel that the system is working. The combination of visual
+                animation, voice guidance, and physical bin movement created a complete, satisfying interaction that
+                made waste sorting feel effortless.</p>
+        </section>
+
+        <!-- Links -->
+        <div class="case-study-links">
+            <a href="https://github.com/VihaanIyer/TossWise-" class="case-study-link" target="_blank"
+                rel="noopener">View on GitHub</a>
+            <a href="https://devpost.com/software/tosswise" class="case-study-link case-study-link--secondary"
+                target="_blank" rel="noopener">View on Devpost</a>
+            <a href="work.html" class="case-study-link case-study-link--secondary">← Back to All Projects</a>
+        </div>
+    </div>
+</body>
+
+</html>

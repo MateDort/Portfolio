@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
 </head>
-<body class="page page--work">
+
+<body class="page page--gallery">
     <div class="menu-dropdown" id="menu-dropdown">
         <div class="menu-item">
             <span class="menu-label">name:</span>
@@ -32,78 +34,104 @@
             <span class="menu-value">Designer at Google</span>
         </div>
     </div>
-    <div class="grid grid--home grid--work">
-        <main class="hero hero--home hero--work">
-            <div class="hero-content">
-                <div class="hero-header-row">
-                    <a class="back-link" href="index.html" aria-label="Back to timeline">← Back</a>
-                    <label class="timeline-select timeline-select--stack timeline-select--right" aria-label="Select project">
-                        <span>Project</span>
-                        <select id="timeline-select"></select>
-                    </label>
-                </div>
-                <div class="case-study-header">
-                    <h1 id="project-title"></h1>
-                    <div class="project-award" id="project-award"></div>
-                    <p class="hero-subline" id="project-copy"></p>
-                    <p class="project-summary" id="project-summary"></p>
-                </div>
-                <div class="view-toggle" id="view-toggle">
-                    <button class="toggle-btn active" data-view="ux">UX Design</button>
-                    <button class="toggle-btn" data-view="developer">Developer</button>
-                </div>
-                <div class="case-study-content">
-                    <div class="case-study-section" id="case-study-ux">
-                        <div class="section-block">
-                            <h2 class="section-title">User Flows</h2>
-                            <ul class="user-flow-list" id="user-flows-ux"></ul>
-                        </div>
-                        <div class="section-block">
-                            <h2 class="section-title">Design Decisions</h2>
-                            <ul class="design-decisions-list" id="design-decisions-ux"></ul>
-                        </div>
-                        <div class="section-block">
-                            <h2 class="section-title">Highlights</h2>
-                            <ul class="highlight-list" id="highlights-ux"></ul>
-                        </div>
+
+    <div class="gallery-container">
+        <header class="gallery-header">
+            <a class="back-link" href="index.html" aria-label="Back to timeline">← Back</a>
+            <h1 class="gallery-title">Selected Work</h1>
+            <p class="gallery-subtitle">Case studies showcasing my approach to design and development</p>
+        </header>
+
+        <div class="project-grid">
+            <!-- TapMate AI -->
+            <a href="tapmate-ai.html" class="project-card">
+                <div class="project-card-content">
+                    <div class="project-card-header">
+                        <h2 class="project-card-title">TapMate AI</h2>
+                        <span class="project-badge project-badge--in-progress">Case Study In Progress</span>
                     </div>
-                    <div class="case-study-section" id="case-study-developer" style="display: none;">
-                        <div class="section-block">
-                            <h2 class="section-title">Architecture</h2>
-                            <ul class="architecture-list" id="architecture-dev"></ul>
-                        </div>
-                        <div class="section-block">
-                            <h2 class="section-title">Tech Stack</h2>
-                            <ul class="tech-stack-list" id="tech-stack-dev"></ul>
-                        </div>
-                        <div class="section-block">
-                            <h2 class="section-title">Highlights</h2>
-                            <ul class="highlight-list" id="highlights-dev"></ul>
-                        </div>
+                    <p class="project-card-description">AI-powered smart glasses and companion app that bring ambient
+                        intelligence to everyday life.</p>
+                    <div class="project-card-meta">
+                        <span class="project-card-role">Product Design · Development · Computer Vision</span>
                     </div>
                 </div>
-                <div class="project-media" id="project-media"></div>
-            </div>
-        </main>
+            </a>
 
-        <aside class="timeline timeline--right" aria-label="Project list">
-            <div class="timeline-glow"></div>
-            <ul class="timeline-list" id="year-wheel">
-                <!-- populated via script -->
-            </ul>
-        </aside>
-    </div>
+            <!-- NagyAI - GrannyAI -->
+            <a href="nagyai.html" class="project-card">
+                <div class="project-card-content">
+                    <div class="project-card-header">
+                        <h2 class="project-card-title">NagyAI - GrannyAI</h2>
+                        <span class="project-badge project-badge--in-progress">Case Study In Progress</span>
+                    </div>
+                    <p class="project-card-description">AI companion designed to provide elderly users with engaging
+                        conversation, assistance, and companionship.</p>
+                    <div class="project-card-meta">
+                        <span class="project-card-role">UX Design · Development</span>
+                    </div>
+                </div>
+            </a>
 
-    <footer class="footer-links footer-links--work">
-        <div class="actions actions--home actions--work">
-            <div class="actions-column">
-                <a class="link-block" id="figma-link" href="#" target="_blank" rel="noopener" style="display: none;">Figma</a>
-                <a class="link-block" id="repo-link" href="#" target="_blank" rel="noopener">Repo</a>
-                <a class="link-block" id="devpost-link" href="#" target="_blank" rel="noopener" style="display: none;">Devpost</a>
-            </div>
+            <!-- TossWise -->
+            <a href="tosswise.html" class="project-card">
+                <div class="project-card-content">
+                    <div class="project-card-header">
+                        <h2 class="project-card-title">TossWise</h2>
+                        <span class="project-badge project-badge--award">👑 Best Use of Gemini API</span>
+                    </div>
+                    <p class="project-card-description">AI-powered smart trash bin that uses computer vision and natural
+                        language to classify waste in real time.</p>
+                    <div class="project-card-meta">
+                        <span class="project-card-role">UX Design · Computer Vision</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- C.L.I.M.A -->
+            <a href="clima.html" class="project-card">
+                <div class="project-card-content">
+                    <div class="project-card-header">
+                        <h2 class="project-card-title">C.L.I.M.A</h2>
+                        <span class="project-badge project-badge--award-silver">🥈 2nd Place HackATL</span>
+                    </div>
+                    <p class="project-card-description">Precision agriculture platform that helps farmers make smarter
+                        decisions using NASA technology.</p>
+                    <div class="project-card-meta">
+                        <span class="project-card-role">Product Design · NASA APIs</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- NeuraNote -->
+            <a href="neuranote.html" class="project-card">
+                <div class="project-card-content">
+                    <div class="project-card-header">
+                        <h2 class="project-card-title">NeuraNote</h2>
+                    </div>
+                    <p class="project-card-description">Cross-platform mobile app that uses AI to transform audio
+                        recordings into structured notes, quizzes, and study materials.</p>
+                    <div class="project-card-meta">
+                        <span class="project-card-role">UX Design · React Native Development</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- SkillShipping -->
+            <a href="skillshipping.html" class="project-card">
+                <div class="project-card-content">
+                    <div class="project-card-header">
+                        <h2 class="project-card-title">SkillShipping</h2>
+                    </div>
+                    <p class="project-card-description">Adaptive learning mobile app that uses AI to create
+                        personalized, dynamic learning experiences.</p>
+                    <div class="project-card-meta">
+                        <span class="project-card-role">UX Design · AI Integration · Development</span>
+                    </div>
+                </div>
+            </a>
         </div>
-    </footer>
-    <script src="script.js" defer></script>
+    </div>
 </body>
-</html>
 
+</html>

@@ -27,64 +27,49 @@ const yearEntries = [
 ];
 
 const projectEntries = [
-    {
-        title: "TapMate AI",
-        copy: "AI-powered smart glasses and companion app that bring ambient intelligence to everyday life.",
-        summary: "Case study in progress. TapMate AI combines wearable technology with advanced AI to create a seamless, hands-free assistant experience. Features real-time visual processing, natural language interaction, and contextual awareness.",
-        inProgress: "Case Study In Progress",
-        repo: "https://github.com/MateDort",
-        ux: {
-            userFlows: [
-                "Coming soon..."
-            ],
-            designDecisions: [
-                "Case study documentation in progress"
-            ],
-            highlights: [
-                "Full case study coming soon"
-            ]
-        },
-        developer: {
-            architecture: [
-                "Details coming soon"
-            ],
-            techStack: [
-                "Documentation in progress"
-            ],
-            highlights: [
-                "Technical details coming soon"
-            ]
-        }
-    },
-    {
-        title: "NagyAI - GrannyAI",
-        copy: "AI companion designed to provide elderly users with engaging conversation, assistance, and companionship.",
-        summary: "Case study in progress. GrannyAI focuses on creating meaningful interactions for elderly users through natural conversation, memory assistance, and daily support features. Designed with accessibility and warmth at its core.",
-        inProgress: "Case Study In Progress",
-        repo: "https://github.com/MateDort",
-        ux: {
-            userFlows: [
-                "Coming soon..."
-            ],
-            designDecisions: [
-                "Case study documentation in progress"
-            ],
-            highlights: [
-                "Full case study coming soon"
-            ]
-        },
-        developer: {
-            architecture: [
-                "Details coming soon"
-            ],
-            techStack: [
-                "Documentation in progress"
-            ],
-            highlights: [
-                "Technical details coming soon"
-            ]
-        }
-    },
+    // {
+    //     title: "BargainHouse",
+    //     copy: "Multi-agent shopping system that finds, verifies, and negotiates deals across new and used marketplaces.",
+    //     summary: "Submitting to The AI Championship hackathon. Building 8 specialized agents that will search 7+ platforms, call stores to verify prices, negotiate with sellers, and rank options. Features live browser automation, Agent Hub for cross-agent communication, and integrations with Twilio, and LLM APIs.",
+    //     repo: "https://github.com/MateDort/BargainHouse",
+    //     inProgress: "In Progress",
+    //     ux: {
+    //         userFlows: [
+    //             "User submits shopping request → Planner agent breaks down into tasks",
+    //             "Search agents query multiple platforms → Results aggregated in Agent Hub",
+    //             "Call agent verifies availability → Negotiate agent handles price discussions",
+    //             "User reviews ranked options → Checkout agent completes purchase"
+    //         ],
+    //         designDecisions: [
+    //             "Agent Hub dashboard provides real-time visual feedback with browser screenshots",
+    //             "Progress tracking shows step-by-step agent actions for transparency",
+    //             "Chakra UI components ensure consistent, accessible interface"
+    //         ],
+    //         highlights: [
+    //             "Designed intuitive Agent Hub for cross-agent communication visualization",
+    //             "Created live progress tracking UI with browser automation screenshots",
+    //             "Built responsive interface for monitoring multi-agent workflows"
+    //         ]
+    //     },
+    //     developer: {
+    //         architecture: [
+    //             "8 specialized agents: Planner, Search, Call, Negotiate, PriceTracker, SynthSummary, Arbiter, Checkout",
+    //             "Agent Hub for real-time cross-agent communication",
+    //             "Browser automation with Puppeteer for platform interactions"
+    //         ],
+    //         techStack: [
+    //             "Frontend: React + Chakra UI",
+    //             "Backend: Node.js/Express",
+    //             "Automation: Puppeteer, Raindrop MCP",
+    //             "APIs: Twilio, ElevenLabs, OpenAI/Gemini"
+    //         ],
+    //         highlights: [
+    //             "Building 8 specialized agents that automate shopping across Amazon, Best Buy, Facebook Marketplace, and more",
+    //             "Creating Agent Hub for real-time cross-agent communication and live visual feedback",
+    //             "Technical stack: React + Chakra UI, Node.js/Express, Puppeteer, Raindrop MCP, Twilio, ElevenLabs, OpenAI/Gemini"
+    //         ]
+    //     }
+    // },
     {
         title: "TossWise",
         copy: "AI-powered smart trash bin that uses computer vision and natural language to classify waste in real time.",
@@ -131,49 +116,6 @@ const projectEntries = [
         }
     },
     {
-        title: "C.L.I.M.A",
-        copy: "Precision agriculture platform that helps farmers make smarter decisions using NASA technology.",
-        summary: "2nd place at HackATL 2025 (NASA Technology Transfer Program). Built in 48 hours with teammates Brody Weinfurtner, Jack Bashaw, and Leah Loukedis. Combines two NASA technologies: HSEG (Hierarchical Segmentation Engine) for pixel-level farmland segmentation into distinct soil and crop zones, and MERRA/AS & Climate Analytics as a Service for weather pattern forecasting. Provides hyper-local, data-driven insights so farmers can optimize irrigation, fertilizer, and planting strategies while preparing for climate challenges.",
-        award: "🥈 2nd Place at HackATL 2025",
-        repo: "https://www.figma.com/proto/IAjpRoCcleqqqPee0KpgSI/Nasa-Project?page-id=0%3A1&node-id=6-5&p=f&viewport=393%2C488%2C0.07&t=TV6b0ItWCHVEJ6fM-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6%3A44&show-proto-sidebar=1",
-        repoLabel: "Figma Design",
-        ux: {
-            userFlows: [
-                "Farmer selects farmland area → HSEG segments into soil and crop zones",
-                "System analyzes weather patterns → MERRA/AS provides climate forecasts",
-                "Farmer receives hyper-local insights → Optimizes irrigation and fertilizer",
-                "Dashboard shows zone-specific recommendations → Farmer makes data-driven decisions"
-            ],
-            designDecisions: [
-                "Full app design created in Figma with focus on data visualization",
-                "Dashboard layout prioritizes actionable insights over raw data",
-                "Zone-based interface matches how farmers think about their land"
-            ],
-            highlights: [
-                "Designed full app's interface in Figma for precision agriculture use case",
-                "Created intuitive dashboard for visualizing NASA satellite data",
-                "Built user flows that translate complex NASA tech into farmer-friendly insights"
-            ]
-        },
-        developer: {
-            architecture: [
-                "NASA HSEG for pixel-level farmland segmentation",
-                "NASA MERRA/AS & Climate Analytics as a Service for weather forecasting",
-                "React web app for presenting insights and recommendations"
-            ],
-            techStack: [
-                "Frontend: React",
-                "NASA APIs: HSEG, MERRA/AS",
-                "Data Processing: Climate analytics integration"
-            ],
-            highlights: [
-                "Built MVP React web app to present the idea and demonstrate NASA tech integration",
-                "Integrated two NASA technologies (HSEG and MERRA/AS) into cohesive platform",
-                "Created data pipeline for processing satellite imagery and climate data"
-            ]
-        }
-    },
-    {
         title: "NeuraNote",
         copy: "Cross-platform mobile app that uses AI to transform audio recordings into structured notes, quizzes, and study materials.",
         summary: "Built with React Native and Expo, NeuraNote combines real-time transcription, GPT-4, and offline AI to support learning workflows. Features live transcription, AI note generation, interactive quizzes, multi-language support, and offline functionality with local AI fallback.",
@@ -216,6 +158,49 @@ const projectEntries = [
                 "Implemented hybrid transcription strategy: device transcript for instant feedback, Whisper for accuracy, automatic fallback for long recordings",
                 "Built graceful error handling with retry logic, exponential backoff, and offline support via Ollama",
                 "Created responsive design system with dynamic font scaling and flexible layouts for 5 screen size categories"
+            ]
+        }
+    },
+    {
+        title: "C.L.I.M.A",
+        copy: "Precision agriculture platform that helps farmers make smarter decisions using NASA technology.",
+        summary: "2nd place at HackATL 2025 (NASA Technology Transfer Program). Built in 48 hours with teammates Brody Weinfurtner, Jack Bashaw, and Leah Loukedis. Combines two NASA technologies: HSEG (Hierarchical Segmentation Engine) for pixel-level farmland segmentation into distinct soil and crop zones, and MERRA/AS & Climate Analytics as a Service for weather pattern forecasting. Provides hyper-local, data-driven insights so farmers can optimize irrigation, fertilizer, and planting strategies while preparing for climate challenges.",
+        award: "🥈 2nd Place at HackATL 2025",
+        repo: "https://www.figma.com/proto/IAjpRoCcleqqqPee0KpgSI/Nasa-Project?page-id=0%3A1&node-id=6-5&p=f&viewport=393%2C488%2C0.07&t=TV6b0ItWCHVEJ6fM-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6%3A44&show-proto-sidebar=1",
+        repoLabel: "Figma Design",
+        ux: {
+            userFlows: [
+                "Farmer selects farmland area → HSEG segments into soil and crop zones",
+                "System analyzes weather patterns → MERRA/AS provides climate forecasts",
+                "Farmer receives hyper-local insights → Optimizes irrigation and fertilizer",
+                "Dashboard shows zone-specific recommendations → Farmer makes data-driven decisions"
+            ],
+            designDecisions: [
+                "Full app design created in Figma with focus on data visualization",
+                "Dashboard layout prioritizes actionable insights over raw data",
+                "Zone-based interface matches how farmers think about their land"
+            ],
+            highlights: [
+                "Designed full app's interface in Figma for precision agriculture use case",
+                "Created intuitive dashboard for visualizing NASA satellite data",
+                "Built user flows that translate complex NASA tech into farmer-friendly insights"
+            ]
+        },
+        developer: {
+            architecture: [
+                "NASA HSEG for pixel-level farmland segmentation",
+                "NASA MERRA/AS & Climate Analytics as a Service for weather forecasting",
+                "React web app for presenting insights and recommendations"
+            ],
+            techStack: [
+                "Frontend: React",
+                "NASA APIs: HSEG, MERRA/AS",
+                "Data Processing: Climate analytics integration"
+            ],
+            highlights: [
+                "Built MVP React web app to present the idea and demonstrate NASA tech integration",
+                "Integrated two NASA technologies (HSEG and MERRA/AS) into cohesive platform",
+                "Created data pipeline for processing satellite imagery and climate data"
             ]
         }
     },
@@ -444,7 +429,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (entry.award) {
                     projectAward.textContent = entry.award;
                     projectAward.classList.add('is-visible');
-                    projectAward.classList.remove('project-award--in-progress');
                     if (entry.award.includes('2nd Place') || entry.award.includes('🥈')) {
                         projectAward.classList.add('project-award--silver');
                     } else {
@@ -453,12 +437,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (entry.inProgress) {
                     projectAward.textContent = entry.inProgress;
                     projectAward.classList.add('is-visible');
-                    projectAward.classList.add('project-award--in-progress');
                     projectAward.classList.remove('project-award--silver');
                 } else {
                     projectAward.classList.remove('is-visible');
                     projectAward.classList.remove('project-award--silver');
-                    projectAward.classList.remove('project-award--in-progress');
                 }
             }
             if (projectCopy) projectCopy.textContent = entry.copy;
@@ -590,10 +572,10 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => {
                 const view = btn.dataset.view;
                 currentView = view;
-
+                
                 toggleButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-
+                
                 if (view === 'ux') {
                     uxSection.style.display = 'block';
                     devSection.style.display = 'none';
@@ -691,11 +673,11 @@ document.addEventListener('DOMContentLoaded', () => {
     renderEntry(dataset[activeIndex]);
     updateDropdown();
 
-    if (isWorkPage) {
-        focusIndex(0);
-    } else {
-        runHomeIntro();
-    }
+if (isWorkPage) {
+    focusIndex(0);
+} else {
+    runHomeIntro();
+}
 
-    // Menu dropdown is now handled by CSS hover
+// Menu dropdown is now handled by CSS hover
 });

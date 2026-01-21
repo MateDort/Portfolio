@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.L.I.M.A · Máté Dort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body class="page page--case-study">
+    <div class="case-study-container">
+        <header class="case-study-hero">
+            <a class="back-link" href="work.html">← Back to Work</a>
+            <h1>C.L.I.M.A</h1>
+            <span class="project-badge project-badge--award-silver">🥈 2nd Place at HackATL 2025</span>
+            <p class="case-study-tagline">Precision agriculture platform that helps farmers make smarter decisions using
+                NASA technology.</p>
+            <p class="case-study-intro">Built in 48 hours at HackATL 2025 with teammates Brody Weinfurtner, Jack Bashaw,
+                and Leah Loukedis. C.L.I.M.A combines two NASA technologies to provide hyper-local, data-driven insights
+                that help farmers optimize irrigation, fertilizer, and planting strategies while preparing for climate
+                challenges.</p>
+
+            <div class="case-study-links">
+                <a href="https://www.figma.com/proto/IAjpRoCcleqqqPee0KpgSI/Nasa-Project?page-id=0%3A1&node-id=6-5&p=f&viewport=393%2C488%2C0.07&t=TV6b0ItWCHVEJ6fM-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6%3A44&show-proto-sidebar=1"
+                    class="case-study-link" target="_blank" rel="noopener">View Figma Design</a>
+            </div>
+        </header>
+
+        <!-- My Role -->
+        <section class="case-study-section">
+            <h2>My Role</h2>
+            <p>As the product designer on the team, I was responsible for the complete app design in Figma, user flow
+                development, and translating complex NASA satellite data into farmer-friendly insights. I also
+                contributed to the MVP React web app development.</p>
+            <ul>
+                <li>Designed full app interface in Figma for precision agriculture use case</li>
+                <li>Created intuitive dashboard for visualizing NASA satellite data</li>
+                <li>Built user flows that translate complex NASA tech into actionable insights</li>
+                <li>Developed MVP React web app to demonstrate the concept</li>
+                <li>Presented the product vision to judges and stakeholders</li>
+            </ul>
+        </section>
+
+        <!-- The Challenge -->
+        <section class="case-study-section">
+            <h2>The Challenge</h2>
+            <h3>Making NASA Technology Accessible to Farmers</h3>
+            <p>Climate change is creating unprecedented challenges for farmers—unpredictable weather patterns, shifting
+                growing seasons, and increased extreme weather events. While NASA has powerful satellite technology that
+                could help, it's largely inaccessible to the people who need it most.</p>
+            <p>The challenge was to:</p>
+            <ul>
+                <li>Make complex NASA satellite data understandable and actionable for farmers</li>
+                <li>Provide hyper-local insights (field-level, not just regional)</li>
+                <li>Deliver recommendations that fit into existing farming workflows</li>
+                <li>Build trust with a user base that may be skeptical of technology</li>
+                <li>Design for users who may have limited tech experience or connectivity</li>
+                <li>Complete a working prototype in 48 hours for the hackathon</li>
+            </ul>
+        </section>
+
+        <!-- The Approach -->
+        <section class="case-study-section">
+            <h2>The Approach</h2>
+            <h3>Insights Over Data</h3>
+            <p>Rather than overwhelming farmers with raw satellite imagery and weather data, we focused on providing
+                clear, actionable insights. The key was understanding how farmers think about their land and what
+                decisions they need to make.</p>
+
+            <h3>NASA Technologies</h3>
+            <ul>
+                <li><strong>HSEG (Hierarchical Segmentation Engine)</strong> - Provides pixel-level farmland
+                    segmentation into distinct soil and crop zones, allowing farmers to see variations across their
+                    fields</li>
+                <li><strong>MERRA/AS & Climate Analytics as a Service</strong> - Delivers weather pattern forecasting
+                    and climate trend analysis for long-term planning</li>
+            </ul>
+
+            <h3>Design Principles</h3>
+            <ul>
+                <li><strong>Zone-based thinking</strong> - Match how farmers mentally divide their land</li>
+                <li><strong>Action-oriented</strong> - Every insight leads to a clear next step</li>
+                <li><strong>Visual-first</strong> - Maps and charts over tables and numbers</li>
+                <li><strong>Progressive disclosure</strong> - Summary first, details on demand</li>
+                <li><strong>Offline-capable</strong> - Work without constant connectivity</li>
+            </ul>
+        </section>
+
+        <!-- The Discovery -->
+        <section class="case-study-section">
+            <h2>The Discovery</h2>
+            <h3>Understanding Farmer Workflows</h3>
+            <p>Through research and conversations with farming stakeholders, we identified key decision points where
+                C.L.I.M.A could provide value:</p>
+            <ul>
+                <li><strong>Irrigation planning</strong> - When and where to water based on soil moisture and weather
+                    forecasts</li>
+                <li><strong>Fertilizer application</strong> - Which zones need nutrients and how much</li>
+                <li><strong>Planting strategy</strong> - Optimal timing and crop selection based on climate trends</li>
+                <li><strong>Harvest planning</strong> - Predicting yield and timing based on growth patterns</li>
+                <li><strong>Climate adaptation</strong> - Long-term planning for shifting weather patterns</li>
+            </ul>
+        </section>
+
+        <!-- Detailed Design -->
+        <section class="case-study-section">
+            <h2>Detailed Design</h2>
+
+            <h3>Dashboard Layout</h3>
+            <p>The dashboard prioritizes actionable insights over raw data. At a glance, farmers see:</p>
+            <ul>
+                <li>Current field conditions with zone-by-zone breakdown</li>
+                <li>Immediate action items (e.g., "Zone 3 needs irrigation within 48 hours")</li>
+                <li>7-day weather forecast with impact on field operations</li>
+                <li>Long-term climate trends affecting planting decisions</li>
+            </ul>
+
+            <h3>Zone-Based Interface</h3>
+            <p>Using HSEG segmentation data, the interface divides farmland into distinct zones based on soil
+                composition, moisture levels, and crop health. This matches how farmers naturally think about their
+                land—not as a uniform field, but as areas with different characteristics and needs.</p>
+
+            <h3>Recommendation System</h3>
+            <p>Rather than just showing data, C.L.I.M.A provides specific recommendations:</p>
+            <ul>
+                <li>"Zone 2 shows low nitrogen levels - apply 40 lbs/acre"</li>
+                <li>"Forecast shows rain in 3 days - delay irrigation in Zones 1 and 4"</li>
+                <li>"Climate trends suggest shifting corn planting 2 weeks earlier next season"</li>
+            </ul>
+
+            <h3>Visual Data Representation</h3>
+            <p>All data is presented visually through maps, heat maps, and simple charts. Color coding makes it easy to
+                spot problem areas at a glance. Detailed numbers are available on tap for those who want them.</p>
+        </section>
+
+        <!-- The Framework -->
+        <section class="case-study-section">
+            <h2>The Framework</h2>
+            <h3>Technical Architecture</h3>
+            <p>We built an MVP React web app that demonstrates the integration of NASA technologies:</p>
+            <ul>
+                <li>NASA HSEG API integration for field segmentation</li>
+                <li>NASA MERRA/AS API for climate and weather data</li>
+                <li>Data processing pipeline to convert satellite imagery into actionable insights</li>
+                <li>React frontend with responsive design for mobile and desktop</li>
+                <li>Map visualization using satellite imagery overlays</li>
+            </ul>
+        </section>
+
+        <!-- The Impact -->
+        <section class="case-study-section">
+            <h2>The Impact</h2>
+            <h3>2nd Place at HackATL 2025</h3>
+            <p>C.L.I.M.A won 2nd place at HackATL 2025 in the NASA Technology Transfer Program track. Judges praised the
+                practical application of NASA technology and the thoughtful UX design that made complex data accessible.
+            </p>
+
+            <h3>Key Achievements</h3>
+            <ul>
+                <li>Successfully integrated two NASA technologies into cohesive platform</li>
+                <li>Created complete Figma design system in 48 hours</li>
+                <li>Built working MVP demonstrating core functionality</li>
+                <li>Received positive feedback from agricultural stakeholders</li>
+                <li>Won 2nd Place at HackATL 2025</li>
+            </ul>
+
+            <h3>Lessons Learned</h3>
+            <p>This project taught me the importance of designing for domain experts who aren't tech experts. Farmers
+                are incredibly knowledgeable about their craft, but may not be familiar with satellite imagery or
+                climate analytics. The key was respecting their expertise while making technology accessible—providing
+                insights, not just data, and matching their mental models of how they think about their land.</p>
+        </section>
+
+        <!-- Links -->
+        <div class="case-study-links">
+            <a href="https://www.figma.com/proto/IAjpRoCcleqqqPee0KpgSI/Nasa-Project?page-id=0%3A1&node-id=6-5&p=f&viewport=393%2C488%2C0.07&t=TV6b0ItWCHVEJ6fM-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6%3A44&show-proto-sidebar=1"
+                class="case-study-link" target="_blank" rel="noopener">View Figma Design</a>
+            <a href="work.html" class="case-study-link case-study-link--secondary">← Back to All Projects</a>
+        </div>
+    </div>
+</body>
+
+</html>

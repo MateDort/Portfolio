@@ -701,6 +701,12 @@ h1 {
     animation: windowsProgress 2s ease-in-out infinite;
 }
 
+.project-badge--failed {
+    background: linear-gradient(135deg, rgba(255, 59, 48, 0.15) 0%, rgba(255, 59, 48, 0.1) 100%);
+    border: 1px solid rgba(255, 59, 48, 0.3);
+    color: var(--fg);
+}
+
 .project-card-description {
     font-size: 1rem;
     line-height: 1.6;

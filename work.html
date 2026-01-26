@@ -70,29 +70,20 @@
             margin-bottom: 6rem;
         }
 
-        .horizontal-scroll {
-            display: flex;
-            gap: 1.5rem;
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
             padding: 0 3rem 2rem;
-            overflow-x: scroll;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            margin: 0;
-        }
-
-        .horizontal-scroll::-webkit-scrollbar {
-            display: none;
+            max-width: 2400px;
+            margin: 0 auto;
         }
 
         .project-card {
-            flex: 0 0 800px;
-            width: 800px;
-            height: 650px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
             margin: 0;
             padding: 0;
             border: none;
@@ -100,8 +91,9 @@
         }
 
         .project-card img {
-            width: 800px;
-            height: 600px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 3;
             object-fit: contain;
             display: block;
             margin: 0;
@@ -111,47 +103,65 @@
 
         .project-label {
             margin-top: 1rem;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 500;
             color: #333;
             text-align: center;
+            width: 100%;
         }
 
-        @media (max-width: 768px) {
+        /* iPad and Tablet */
+        @media (max-width: 1024px) and (min-width: 768px) {
             .header {
                 padding: 1.5rem 2rem;
             }
 
-            .back-link {
-                font-size: 1.25rem;
-            }
-
-            .header-date {
-                font-size: 0.875rem;
-            }
-
             .main-content {
-                padding-top: 6rem;
+                padding-top: 7rem;
             }
 
-            .section {
-                margin-bottom: 4rem;
-            }
-
-            .horizontal-scroll {
-                padding: 0 2rem 1.5rem;
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0 2rem 2rem;
                 gap: 1.5rem;
             }
 
-            .project-card {
-                flex: 0 0 600px;
-                width: 600px;
-                height: 500px;
+            .project-label {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Mobile / iPhone */
+        @media (max-width: 767px) {
+            .header {
+                padding: 1rem 1.5rem;
             }
 
-            .project-card img {
-                width: 600px;
-                height: 450px;
+            .back-link {
+                font-size: 1.1rem;
+            }
+
+            .header-date {
+                font-size: 0.8rem;
+            }
+
+            .main-content {
+                padding-top: 5rem;
+            }
+
+            .section {
+                margin-bottom: 3rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1.5rem 1.5rem;
+                gap: 1.5rem;
+            }
+
+            .project-label {
+                font-size: 0.85rem;
+                margin-top: 0.75rem;
             }
         }
     </style>
@@ -168,7 +178,7 @@
     <main class="main-content">
         <!-- Single Continuous Section -->
         <section class="section">
-            <div class="horizontal-scroll">
+            <div class="projects-grid">
                 <!-- Case Studies -->
                 <a href="https://import-chill-37950586.figma.site" class="project-card" target="_blank" rel="noopener" data-section="Case Studies">
                     <img src="images/work_lading_page_images/TapMate.png" alt="TapMate AI">
@@ -210,35 +220,33 @@
     </main>
 
     <script>
-        // Enable horizontal scrolling with mouse wheel
-        const scrollContainer = document.querySelector('.horizontal-scroll');
-        
-        scrollContainer.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            scrollContainer.scrollLeft += e.deltaY;
-        });
-
-        // Update current section in header based on which project is in view
         const currentSectionSpan = document.getElementById('current-section');
         const projectCards = document.querySelectorAll('[data-section]');
 
+        // Update current section in header based on which project is in view
         function updateCurrentSection() {
-            const scrollLeft = scrollContainer.scrollLeft;
-            const containerCenter = scrollLeft + scrollContainer.offsetWidth / 2;
+            const scrollTop = window.scrollY || window.pageYOffset;
+            const viewportCenter = scrollTop + window.innerHeight / 2;
 
             projectCards.forEach(card => {
-                const cardLeft = card.offsetLeft;
-                const cardRight = cardLeft + card.offsetWidth;
+                const cardTop = card.offsetTop;
+                const cardBottom = cardTop + card.offsetHeight;
 
-                if (containerCenter >= cardLeft && containerCenter < cardRight) {
+                if (viewportCenter >= cardTop && viewportCenter < cardBottom) {
                     const sectionName = card.getAttribute('data-section');
                     currentSectionSpan.textContent = sectionName;
                 }
             });
         }
 
-        // Update on horizontal scroll
-        scrollContainer.addEventListener('scroll', updateCurrentSection);
+        // Update on scroll with debouncing for performance
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            scrollTimeout = setTimeout(updateCurrentSection, 50);
+        }, { passive: true });
         
         // Initial update
         updateCurrentSection();

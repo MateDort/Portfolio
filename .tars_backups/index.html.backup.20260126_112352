@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máté Dort · Portfolio</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body class="page page--home">
+    <button class="menu-button" id="menu-button" aria-label="Open menu">👦🏼</button>
+    <div class="menu-dropdown" id="menu-dropdown">
+        <div class="menu-item">
+            <span class="menu-label">name:</span>
+            <span class="menu-value">Máté Dort</span>
+        </div>
+        <div class="menu-item">
+            <span class="menu-label">nationality:</span>
+            <span class="menu-value">Hungarian</span>
+        </div>
+        <div class="menu-item">
+            <span class="menu-label">occupation:</span>
+            <span class="menu-value">Student</span>
+        </div>
+        <div class="menu-item">
+            <span class="menu-label">major:</span>
+            <span class="menu-value">Computer Information Systems</span>
+        </div>
+        <div class="menu-item">
+            <span class="menu-label">dream job:</span>
+            <span class="menu-value">Designer at Google</span>
+        </div>
+    </div>
+    <div class="grid grid--home">
+        <main class="hero hero--home">
+            <label class="timeline-select timeline-select--fixed" aria-label="Select year">
+                <span>Year</span>
+                <select id="timeline-select"></select>
+            </label>
+            <div class="hero-content">
+                <h1 id="hero-line"></h1>
+                <p class="age-label">Age <span id="age-value"></span></p>
+            </div>
+        </main>
+
+        <aside class="timeline timeline--right" aria-label="Life events timeline">
+            <div class="timeline-glow"></div>
+            <ul class="timeline-list" id="year-wheel">
+                <!-- populated via JS -->
+            </ul>
+        </aside>
+    </div>
+
+    <footer class="footer-links">
+        <div class="actions actions--home">
+            <div class="actions-column">
+                <a class="link-block" href="https://www.linkedin.com/in/m%C3%A1t%C3%A8-dort-777ab3300/" target="_blank"
+                    rel="noopener">LinkedIn</a>
+                <a class="link-block" href="https://github.com/MateDort" target="_blank" rel="noopener">GitHub</a>
+                <a class="link-block"
+                    href="https://devpost.com/matedort1?ref_content=user-portfolio&amp;ref_feature=portfolio&amp;ref_medium=global-nav"
+                    target="_blank" rel="noopener">Devpost</a>
+            </div>
+            <div class="actions-column">
+                <a class="link-block emphasis" href="work.html">Work</a>
+                <a class="link-block" href="files/Mátè_Dort_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>

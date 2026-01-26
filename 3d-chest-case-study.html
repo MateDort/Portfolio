@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Chest · Máté Dort</title>
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            overflow-x: hidden;
+        }
+
+        .scroll-animation-section {
+            height: 300vh;
+            position: relative;
+            background: #000;
+        }
+
+        .animation-sticky {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .animation-canvas {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        #animation-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            text-align: center;
+            animation: pulse 2s ease-in-out infinite;
+            z-index: 10;
+            transition: opacity 0.3s;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .scroll-indicator.hidden {
+            opacity: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .scroll-arrow {
+            display: block;
+            margin-top: 0.75rem;
+            font-size: 2rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        .title-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            color: #fff;
+            transition: opacity 0.5s ease;
+            text-align: center;
+        }
+
+        .title-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .title-overlay h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 800;
+            margin: 0;
+            line-height: 0.9;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .title-overlay p {
+            font-size: clamp(0.875rem, 2vw, 1.25rem);
+            margin: 1.5rem 0 0;
+            opacity: 0.8;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.5s;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-text {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: #667eea;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .frame-counter {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
+            font-family: monospace;
+            z-index: 10;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .frame-counter:hover {
+            opacity: 1;
+        }
+
+        .case-study-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            background: #ffffff;
+            position: relative;
+        }
+
+        body:has(.case-study-container) {
+            background: #ffffff;
+        }
+
+        .case-study-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .case-study-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .case-study-meta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .meta-label {
+            font-size: 0.875rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .meta-value {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .case-study-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 2rem;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .media-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .media-item img,
+        .media-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .process-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .process-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.125rem;
+            line-height: 1.6;
+        }
+
+        .process-list li:last-child {
+            border-bottom: none;
+        }
+
+        .process-number {
+            display: inline-block;
+            width: 2rem;
+            height: 2rem;
+            background: #000;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 2rem;
+            margin-right: 1rem;
+            font-weight: 600;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .skill-category-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: #666;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .case-study-title {
+                font-size: 2rem;
+            }
+            
+            .frame-counter {
+                top: 1rem;
+                right: 1rem;
+                font-size: 0.65rem;
+            }
+
+            .title-overlay h1 {
+                font-size: clamp(2.5rem, 10vw, 4rem);
+            }
+
+            .title-overlay p {
+                font-size: clamp(0.75rem, 3vw, 1rem);
+                margin-top: 1rem;
+            }
+
+            .case-study-container {
+                padding: 3rem 1.5rem;
+            }
+
+            .scroll-indicator {
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-text">Loading Animation...</div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Scroll Animation Section -->
+    <section class="scroll-animation-section" id="scroll-section">
+        <div class="animation-sticky">
+            <div class="animation-canvas">
+                <canvas id="animation-canvas"></canvas>
+                <div class="title-overlay" id="title-overlay">
+                    <h1>3D CHEST</h1>
+                    <p>From Cube to Treasure</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="case-study-container">
+        <a class="back-link" href="work.html">← Back to Work</a>
+
+        <div class="case-study-header">
+            <h1 class="case-study-title">3D Chest</h1>
+            <p class="case-study-subtitle">Learning 3D fundamentals through a treasure chest modeling project</p>
+            
+            <div class="case-study-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Role</span>
+                    <span class="meta-value">3D Student</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Tools</span>
+                    <span class="meta-value">Blender</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Course</span>
+                    <span class="meta-value">Blender Academy</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Year</span>
+                    <span class="meta-value">2025</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overview Section -->
+        <div class="case-study-section">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="section-description">
+                This treasure chest was my first major 3D modeling project, created as part of the Blender Academy Course. The project introduced me to fundamental 3D modeling concepts including mesh manipulation, basic modeling techniques, and the Blender interface.
+            </p>
+            <p class="section-description">
+                Starting from a simple cube, I learned how to transform basic shapes into a detailed 3D object. The chest project taught me essential skills like extrusion, loop cuts, beveling, and basic geometry management—all foundational techniques for 3D modeling.
+            </p>
+            <p class="section-description">
+                <strong>Note on rendering:</strong> Due to hardware limitations with my laptop, I wasn't able to render high-quality final images with advanced lighting and materials. The rendered frames show the modeling progression but don't include the full texturing and lighting treatment that a more powerful machine would allow.
+            </p>
+        </div>
+
+        <!-- Process Section -->
+        <div class="case-study-section">
+            <h2 class="section-title">Learning Process</h2>
+            <ul class="process-list">
+                <li>
+                    <span class="process-number">1</span>
+                    <strong>Blender Interface & Navigation:</strong> Learned basic viewport navigation, selection tools, and the fundamental UI layout. Mastered keyboard shortcuts for efficient workflow.
+                </li>
+                <li>
+                    <span class="process-number">2</span>
+                    <strong>Starting from a Cube:</strong> Began with Blender's default cube and learned how to manipulate basic primitives. Practiced moving, rotating, and scaling objects in 3D space.
+                </li>
+                <li>
+                    <span class="process-number">3</span>
+                    <strong>Edit Mode & Mesh Manipulation:</strong> Discovered Edit Mode for vertex, edge, and face manipulation. Learned extrusion, loop cuts, and inset techniques to create the chest's basic shape.
+                </li>
+                <li>
+                    <span class="process-number">4</span>
+                    <strong>Modeling Techniques:</strong> Applied beveling for rounded edges, learned array and mirror modifiers for symmetrical details, and practiced proper topology for clean geometry.
+                </li>
+                <li>
+                    <span class="process-number">5</span>
+                    <strong>Adding Details:</strong> Created the chest lid, hinges, lock mechanism, and decorative elements. Practiced duplicating and positioning objects to build complex structures from simple parts.
+                </li>
+                <li>
+                    <span class="process-number">6</span>
+                    <strong>Basic Materials & Rendering:</strong> Introduced to materials, shading, and basic rendering concepts. Experimented with lighting to showcase the model, though hardware limitations prevented high-quality renders.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Media Gallery -->
+        <div class="case-study-section">
+            <h2 class="section-title">Visual Development</h2>
+            <div class="media-grid">
+                <div class="media-item">
+                    <img src="images/3D/3D_Chest/other/1st_model.png" alt="First Model Render">
+                    <p style="text-align: center; margin-top: 1rem; color: #666;">Initial Model</p>
+                </div>
+                <div class="media-item">
+                    <img src="images/3D/3D_Chest/other/1st_wireframe.png" alt="First Wireframe View">
+                    <p style="text-align: center; margin-top: 1rem; color: #666;">Wireframe Topology</p>
+                </div>
+                <div class="media-item">
+                    <img src="images/3D/3D_Chest/other/model.png" alt="Final Model Render">
+                    <p style="text-align: center; margin-top: 1rem; color: #666;">Refined Model</p>
+                </div>
+                <div class="media-item">
+                    <img src="images/3D/3D_Chest/other/wireframe.png" alt="Final Wireframe">
+                    <p style="text-align: center; margin-top: 1rem; color: #666;">Final Topology</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Details -->
+        <div class="case-study-section">
+            <h2 class="section-title">Skills Learned</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Core Modeling</h3>
+                    <ul class="skill-list">
+                        <li>Extrusion & Loop Cuts</li>
+                        <li>Beveling & Inset Faces</li>
+                        <li>Vertex/Edge/Face Selection</li>
+                        <li>Basic Mesh Manipulation</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Modifiers</h3>
+                    <ul class="skill-list">
+                        <li>Mirror Modifier</li>
+                        <li>Array Modifier</li>
+                        <li>Bevel Modifier</li>
+                        <li>Subdivision Surface Basics</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Interface & Navigation</h3>
+                    <ul class="skill-list">
+                        <li>Viewport Navigation</li>
+                        <li>Object vs Edit Mode</li>
+                        <li>Keyboard Shortcuts</li>
+                        <li>Tool Panel Usage</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Workflow</h3>
+                    <ul class="skill-list">
+                        <li>Object Duplication</li>
+                        <li>Proportional Editing</li>
+                        <li>Snap & Align Tools</li>
+                        <li>Basic Scene Setup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Learnings -->
+        <div class="case-study-section">
+            <h2 class="section-title">Key Learnings & Reflections</h2>
+            <p class="section-description">
+                This first project in the Blender Academy Course was my introduction to 3D modeling. Starting from a basic cube and transforming it into a recognizable object was both challenging and rewarding. I learned that 3D modeling is about breaking down complex objects into simple shapes and building them up step by step.
+            </p>
+            <p class="section-description">
+                The most valuable lessons came from understanding Edit Mode and learning to manipulate vertices, edges, and faces. These fundamental skills form the foundation of all 3D modeling work. I also learned the importance of keyboard shortcuts—they dramatically speed up the workflow once mastered.
+            </p>
+            <p class="section-description">
+                Working with limited hardware taught me to be strategic about my modeling approach and render settings. While I couldn't achieve photorealistic renders on my laptop, I learned to focus on clean geometry and efficient modeling techniques. This constraint actually helped me develop better habits—focusing on topology and structure rather than relying on heavy rendering to fix modeling issues.
+            </p>
+            <p class="section-description">
+                The chest project showed me how powerful Blender is as a tool and sparked my interest in continuing to learn 3D modeling. It bridges my interest in visual design with technical skills, similar to how I approach UX design and development work.
+            </p>
+        </div>
+
+        <!-- Stats or Metrics -->
+        <div class="case-study-section">
+            <h2 class="section-title">Project Details</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Course</h3>
+                    <p class="section-description" style="font-size: 1.5rem; font-weight: 600; margin: 0; color: #667eea;">
+                        Blender Academy
+                    </p>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Project Level</h3>
+                    <p class="section-description" style="font-size: 1.5rem; font-weight: 600; margin: 0; color: #667eea;">
+                        Beginner
+                    </p>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Total Frames</h3>
+                    <p class="section-description" style="font-size: 1.5rem; font-weight: 600; margin: 0; color: #667eea;">
+                        192
+                    </p>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Main Tool</h3>
+                    <p class="section-description" style="font-size: 1.5rem; font-weight: 600; margin: 0; color: #667eea;">
+                        Blender 4.0+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const frameCount = 192;
+        const basePath = 'images/3D/3D_Chest/_MConverter.eu_A_single_cube_1080p_202601251146/Animation/';
+        
+        // Preload images
+        const images = [];
+        let imagesLoaded = 0;
+        let currentFrame = 0;
+        
+        const canvas = document.getElementById('animation-canvas');
+        const ctx = canvas.getContext('2d');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const loadingProgress = document.getElementById('loading-progress');
+        const titleOverlay = document.getElementById('title-overlay');
+        const scrollSection = document.getElementById('scroll-section');
+
+        // Preload all frames
+        function preloadImages() {
+            for (let i = 1; i <= frameCount; i++) {
+                const img = new Image();
+                const frameNumber = String(i).padStart(5, '0');
+                img.src = `${basePath}${frameNumber}.png`;
+                
+                img.onload = () => {
+                    imagesLoaded++;
+                    const progress = (imagesLoaded / frameCount) * 100;
+                    loadingProgress.style.width = progress + '%';
+                    
+                    if (imagesLoaded === frameCount) {
+                        setTimeout(() => {
+                            loadingOverlay.classList.add('hidden');
+                            resizeCanvas();
+                            render();
+                        }, 500);
+                    }
+                };
+                
+                img.onerror = () => {
+                    console.error(`Failed to load frame ${i}`);
+                    imagesLoaded++;
+                    const progress = (imagesLoaded / frameCount) * 100;
+                    loadingProgress.style.width = progress + '%';
+                };
+                
+                images.push(img);
+            }
+        }
+
+        // Resize canvas to fill entire viewport with cover behavior + zoom
+        function resizeCanvas() {
+            if (images[0] && images[0].complete) {
+                const img = images[0];
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+                
+                const imgAspect = img.width / img.height;
+                const viewportAspect = viewportWidth / viewportHeight;
+                
+                // Scale factor to make images bigger (zoom in)
+                const scaleFactor = 1.15; // Increase for more zoom
+                
+                // Calculate dimensions to cover entire viewport (like CSS object-fit: cover)
+                let renderWidth, renderHeight, offsetX, offsetY;
+                
+                if (viewportAspect > imgAspect) {
+                    // Viewport is wider - scale to width
+                    renderWidth = viewportWidth * scaleFactor;
+                    renderHeight = (viewportWidth / imgAspect) * scaleFactor;
+                    offsetX = (viewportWidth - renderWidth) / 2;
+                    offsetY = (viewportHeight - renderHeight) / 2;
+                } else {
+                    // Viewport is taller - scale to height
+                    renderHeight = viewportHeight * scaleFactor;
+                    renderWidth = (viewportHeight * imgAspect) * scaleFactor;
+                    offsetX = (viewportWidth - renderWidth) / 2;
+                    offsetY = (viewportHeight - renderHeight) / 2;
+                }
+                
+                // Set canvas to exact viewport size
+                canvas.width = viewportWidth;
+                canvas.height = viewportHeight;
+                canvas.renderWidth = renderWidth;
+                canvas.renderHeight = renderHeight;
+                canvas.offsetX = offsetX;
+                canvas.offsetY = offsetY;
+            }
+        }
+
+        // Render current frame
+        function render() {
+            if (images[currentFrame] && images[currentFrame].complete) {
+                // Fill background with black
+                ctx.fillStyle = '#000000';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw image with cover behavior
+                ctx.drawImage(
+                    images[currentFrame], 
+                    canvas.offsetX, 
+                    canvas.offsetY, 
+                    canvas.renderWidth, 
+                    canvas.renderHeight
+                );
+            }
+        }
+
+        // Handle scroll
+        function handleScroll() {
+            const section = scrollSection;
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const scrollY = window.scrollY;
+            
+            // Calculate scroll progress within the section
+            const scrollProgress = Math.max(0, Math.min(1, 
+                (scrollY - sectionTop) / (sectionHeight - window.innerHeight)
+            ));
+            
+            // Map scroll progress to frame index
+            const targetFrame = Math.min(
+                frameCount - 1,
+                Math.floor(scrollProgress * frameCount)
+            );
+            
+            if (targetFrame !== currentFrame) {
+                currentFrame = targetFrame;
+                render();
+            }
+            
+            // Fade out title overlay as user scrolls
+            if (scrollProgress > 0.15) {
+                titleOverlay.classList.add('hidden');
+            } else {
+                titleOverlay.classList.remove('hidden');
+            }
+        }
+
+        // Handle window resize
+        function handleResize() {
+            resizeCanvas();
+            render();
+        }
+
+        // Initialize
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleResize);
+        
+        // Start preloading
+        preloadImages();
+
+        // Initial scroll check
+        handleScroll();
+    </script>
+</body>
+
+</html>

@@ -5,174 +5,244 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Máté Dort · Work</title>
-    <link href="styles.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:hover,
+        a:focus,
+        a:active,
+        a:visited {
+            text-decoration: none;
+            color: inherit;
+            outline: none;
+            box-shadow: none;
+            background: none;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        .back-link {
+            color: #000;
+            text-decoration: none;
+            font-size: 1.5rem;
+            display: inline-block;
+        }
+
+        .header-date {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .main-content {
+            padding-top: 8rem;
+        }
+
+        .section {
+            margin-bottom: 6rem;
+        }
+
+        .horizontal-scroll {
+            display: flex;
+            gap: 1.5rem;
+            padding: 0 3rem 2rem;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            margin: 0;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .project-card {
+            flex: 0 0 800px;
+            width: 800px;
+            height: 650px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            border: none;
+            outline: none;
+        }
+
+        .project-card img {
+            width: 800px;
+            height: 600px;
+            object-fit: contain;
+            display: block;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        .project-label {
+            margin-top: 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1.5rem 2rem;
+            }
+
+            .back-link {
+                font-size: 1.25rem;
+            }
+
+            .header-date {
+                font-size: 0.875rem;
+            }
+
+            .main-content {
+                padding-top: 6rem;
+            }
+
+            .section {
+                margin-bottom: 4rem;
+            }
+
+            .horizontal-scroll {
+                padding: 0 2rem 1.5rem;
+                gap: 1.5rem;
+            }
+
+            .project-card {
+                flex: 0 0 600px;
+                width: 600px;
+                height: 500px;
+            }
+
+            .project-card img {
+                width: 600px;
+                height: 450px;
+            }
+        }
+    </style>
 </head>
 
-<body class="page page--gallery">
-    <div class="menu-dropdown" id="menu-dropdown">
-        <div class="menu-item">
-            <span class="menu-label">name:</span>
-            <span class="menu-value">Máté Dort</span>
-        </div>
-        <div class="menu-item">
-            <span class="menu-label">nationality:</span>
-            <span class="menu-value">Hungarian</span>
-        </div>
-        <div class="menu-item">
-            <span class="menu-label">occupation:</span>
-            <span class="menu-value">Student</span>
-        </div>
-        <div class="menu-item">
-            <span class="menu-label">major:</span>
-            <span class="menu-value">Computer Information Systems</span>
-        </div>
-        <div class="menu-item">
-            <span class="menu-label">dream job:</span>
-            <span class="menu-value">Designer at Google</span>
-        </div>
-    </div>
+<body>
+    <header class="header">
+        <a class="back-link" href="index.html">← Back</a>
+        <span class="header-date">
+            <span id="current-section">Case Studies</span>
+        </span>
+    </header>
 
-    <div class="gallery-container">
-        <header class="gallery-header">
-            <a class="back-link" href="index.html" aria-label="Back to timeline">← Back</a>
-            <h1 class="gallery-title">Selected Work</h1>
-            <p class="gallery-subtitle">Case studies showcasing my approach to design and development</p>
-        </header>
+    <main class="main-content">
+        <!-- Single Continuous Section -->
+        <section class="section">
+            <div class="horizontal-scroll">
+                <!-- Case Studies -->
+                <a href="https://import-chill-37950586.figma.site" class="project-card" target="_blank" rel="noopener" data-section="Case Studies">
+                    <img src="images/work_lading_page_images/TapMate.png" alt="TapMate AI">
+                    <div class="project-label">TapMate AI</div>
+                </a>
 
-        <div class="project-grid">
-            <!-- TapMate AI -->
-            <a href="https://import-chill-37950586.figma.site" class="project-card" target="_blank" rel="noopener">
-                <div class="project-card-content">
-                    <div class="project-card-header">
-                        <h2 class="project-card-title">TapMate AI</h2>
-                        <span class="project-badge project-badge--in-progress">In Progress</span>
-                    </div>
-                    <p class="project-card-description">AI-powered smart glasses and companion app that bring ambient
-                        intelligence to everyday life.</p>
-                    <div class="project-card-meta">
-                        <span class="project-card-role">Product Design · Development · Computer Vision</span>
-                    </div>
-                </div>
-            </a>
+                <a href="https://syntax-desert-98850024.figma.site" class="project-card" target="_blank" rel="noopener" data-section="Case Studies">
+                    <img src="images/work_lading_page_images/NagyiAI.png" alt="NagyiAI">
+                    <div class="project-label">NagyiAI</div>
+                </a>
 
-            <!-- NagyiAI - GrannyAI -->
-            <a href="https://syntax-desert-98850024.figma.site" class="project-card" target="_blank" rel="noopener">
-                <div class="project-card-content">
-                    <div class="project-card-header">
-                        <h2 class="project-card-title">NagyiAI - GrannyAI</h2>
-                        <span class="project-badge project-badge--in-progress">In Progress</span>
-                    </div>
-                    <p class="project-card-description">AI companion designed to provide elderly users with engaging
-                        conversation, assistance, and companionship.</p>
-                    <div class="project-card-meta">
-                        <span class="project-card-role">UX Design · Development</span>
-                    </div>
-                </div>
-            </a>
+                <a href="https://canal-work-03746920.figma.site" class="project-card" target="_blank" rel="noopener" data-section="Case Studies">
+                    <img src="images/work_lading_page_images/TossWise.png" alt="TossWise">
+                    <div class="project-label">TossWise</div>
+                </a>
 
-            <!-- TossWise -->
-            <a href="https://canal-work-03746920.figma.site" class="project-card" target="_blank" rel="noopener">
-                <div class="project-card-content">
-                    <div class="project-card-header">
-                        <h2 class="project-card-title">TossWise</h2>
-                        <span class="project-badge project-badge--award">👑 Best Use of Gemini API</span>
-                    </div>
-                    <p class="project-card-description">AI-powered smart trash bin that uses computer vision and natural
-                        language to classify waste in real time.</p>
-                    <div class="project-card-meta">
-                        <span class="project-card-role">UX Design · Computer Vision</span>
-                    </div>
-                </div>
-            </a>
+                <a href="https://fall-skill-16908750.figma.site" class="project-card" target="_blank" rel="noopener" data-section="Case Studies">
+                    <img src="images/work_lading_page_images/CLIMA_2.png" alt="C.L.I.M.A">
+                    <div class="project-label">C.L.I.M.A</div>
+                </a>
 
-            <!-- C.L.I.M.A -->
-            <a href="https://fall-skill-16908750.figma.site" class="project-card" target="_blank" rel="noopener">
-                <div class="project-card-content">
-                    <div class="project-card-header">
-                        <h2 class="project-card-title">C.L.I.M.A</h2>
-                        <span class="project-badge project-badge--award-silver">🥈 2nd Place HackATL</span>
-                    </div>
-                    <p class="project-card-description">Precision agriculture platform that helps farmers make smarter
-                        decisions using NASA technology.</p>
-                    <div class="project-card-meta">
-                        <span class="project-card-role">Product Design · NASA APIs</span>
-                    </div>
-                </div>
-            </a>
+                <a href="https://inter-sling-31490316.figma.site" class="project-card" target="_blank" rel="noopener" data-section="Case Studies">
+                    <img src="images/work_lading_page_images/NeuraNote.png" alt="NeuraNote">
+                    <div class="project-label">NeuraNote</div>
+                </a>
 
-            <!-- NeuraNote -->
-            <a href="https://inter-sling-31490316.figma.site" class="project-card" target="_blank" rel="noopener">
-                <div class="project-card-content">
-                    <div class="project-card-header">
-                        <h2 class="project-card-title">NeuraNote</h2>
-                        <span class="project-badge project-badge--failed">Failed</span>
-                    </div>
-                    <p class="project-card-description">Cross-platform mobile app that uses AI to transform audio
-                        recordings into structured notes, quizzes, and study materials.</p>
-                    <div class="project-card-meta">
-                        <span class="project-card-role">UX Design · React Native Development</span>
-                    </div>
-                </div>
-            </a>
+                <a href="https://ice-formal-60030671.figma.site" class="project-card" target="_blank" rel="noopener" data-section="Case Studies">
+                    <img src="images/work_lading_page_images/NeuraNote.png" alt="SkillShipping">
+                    <div class="project-label">SkillShipping</div>
+                </a>
 
-            <!-- SkillShipping -->
-            <a href="https://ice-formal-60030671.figma.site" class="project-card" target="_blank" rel="noopener">
-                <div class="project-card-content">
-                    <div class="project-card-header">
-                        <h2 class="project-card-title">SkillShipping</h2>
-                        <span class="project-badge project-badge--failed">Failed</span>
-                    </div>
-                    <p class="project-card-description">Adaptive learning mobile app that uses AI to create
-                        personalized, dynamic learning experiences.</p>
-                    <div class="project-card-meta">
-                        <span class="project-card-role">UX Design · AI Integration · Development</span>
-                    </div>
-                </div>
-            </a>
-        </div>
+                <!-- 3D Design -->
+                <a href="3d-chest-case-study.html" class="project-card" data-section="3D Design">
+                    <img src="images/work_lading_page_images/Chest.png" alt="3D Chest">
+                    <div class="project-label">3D Chest</div>
+                </a>
+            </div>
+        </section>
+    </main>
 
-        <!-- 3D Design Section -->
-        <header class="gallery-header" style="margin-top: 4rem;">
-            <h2 class="gallery-title">3D Design</h2>
-            <p class="gallery-subtitle">3D modeling and design projects</p>
-        </header>
+    <script>
+        // Enable horizontal scrolling with mouse wheel
+        const scrollContainer = document.querySelector('.horizontal-scroll');
+        
+        scrollContainer.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            scrollContainer.scrollLeft += e.deltaY;
+        });
 
-        <div class="project-grid">
-            <!-- 3D Design Project Placeholder -->
-            <a href="#" class="project-card">
-                <div class="project-card-content">
-                    <div class="project-card-header">
-                        <h2 class="project-card-title">3D Project</h2>
-                    </div>
-                    <p class="project-card-description">Description of your 3D design project.</p>
-                    <div class="project-card-meta">
-                        <span class="project-card-role">3D Modeling · Design</span>
-                    </div>
-                </div>
-            </a>
-        </div>
+        // Update current section in header based on which project is in view
+        const currentSectionSpan = document.getElementById('current-section');
+        const projectCards = document.querySelectorAll('[data-section]');
 
-        <!-- Automations Section -->
-        <header class="gallery-header" style="margin-top: 4rem;">
-            <h2 class="gallery-title">Automations</h2>
-            <p class="gallery-subtitle">Workflow automation and integration projects</p>
-        </header>
+        function updateCurrentSection() {
+            const scrollLeft = scrollContainer.scrollLeft;
+            const containerCenter = scrollLeft + scrollContainer.offsetWidth / 2;
 
-        <div class="project-grid">
-            <!-- Automation Project Placeholder -->
-            <a href="#" class="project-card">
-                <div class="project-card-content">
-                    <div class="project-card-header">
-                        <h2 class="project-card-title">Automation Project</h2>
-                    </div>
-                    <p class="project-card-description">Description of your automation project.</p>
-                    <div class="project-card-meta">
-                        <span class="project-card-role">Automation · Integration</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
+            projectCards.forEach(card => {
+                const cardLeft = card.offsetLeft;
+                const cardRight = cardLeft + card.offsetWidth;
+
+                if (containerCenter >= cardLeft && containerCenter < cardRight) {
+                    const sectionName = card.getAttribute('data-section');
+                    currentSectionSpan.textContent = sectionName;
+                }
+            });
+        }
+
+        // Update on horizontal scroll
+        scrollContainer.addEventListener('scroll', updateCurrentSection);
+        
+        // Initial update
+        updateCurrentSection();
+    </script>
 </body>
 
 </html>

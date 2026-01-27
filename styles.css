@@ -35,7 +35,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     line-height: 1.3;
     color: var(--fg);
-    background: blue;
+    background: var(--bg);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,7 +55,7 @@ body.page--work {
 .menu-button {
     position: absolute;
     top: clamp(1.5rem, 4vw, 4rem);
-    left: clamp(1.5rem, 4vw, 4rem);
+    left: calc(clamp(1.5rem, 4vw, 4rem) + 50px);
     z-index: 1000;
     background: transparent;
     border: none;
@@ -71,7 +71,7 @@ body.page--work {
 .menu-dropdown {
     position: absolute;
     top: calc(clamp(1.5rem, 4vw, 4rem) + 3.5rem);
-    left: clamp(1.5rem, 4vw, 4rem);
+    left: calc(clamp(1.5rem, 4vw, 4rem) + 50px);
     z-index: 999;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(20px);
@@ -1064,5 +1064,4 @@ h1 {
     h1 {
         font-size: clamp(2.2rem, 9vw, 3.5rem);
     }
-
-    .project-grid {
+}

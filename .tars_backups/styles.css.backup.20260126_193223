@@ -35,7 +35,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     line-height: 1.3;
     color: var(--fg);
-    background: pink;
+    background: var(--bg);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -320,6 +320,11 @@ h1 {
 .timeline-select--fixed {
     margin-top: 0;
     margin-bottom: 1rem;
+}
+
+.timeline-select--fixed select {
+    min-width: 140px;
+    text-align: center;
 }
 
 .timeline-select--stack {
@@ -1066,3 +1071,57 @@ h1 {
     }
 
     .project-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .gallery-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .progress-timeline {
+        padding: 1.5rem 0;
+    }
+
+    .progress-bubble {
+        width: 40px;
+        height: 40px;
+    }
+
+    .progress-stage-label {
+        font-size: 0.75rem;
+        max-width: 80px;
+    }
+
+    .case-study-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .case-study-section h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-dropdown {
+        min-width: 240px;
+        font-size: 0.85rem;
+    }
+
+    .menu-item {
+        padding: 0.4rem 0.75rem;
+    }
+
+    .menu-label {
+        min-width: 85px;
+    }
+
+    .actions--home {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    body {
+        padding: 1.5rem 1rem;
+    }
+}
